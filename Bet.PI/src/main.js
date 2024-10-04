@@ -1,6 +1,7 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.bundle.min.js';  // Isso é opcional, caso precise dos componentes JS do Bootstrap.
+import './assets/styles.css'
+import router from './router.ts'
+
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#app')
+createApp(App).use(router).mount('#app')
