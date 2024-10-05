@@ -1,0 +1,57 @@
+.bg-primary-b{
+    background-color: #282828;
+    color: #FFF;
+}
+
+.bg-secondary-b{
+    background-color: #015440;
+    color: #FBE219;
+}
+
+.bg-tertiary-b{
+    background-color: #FBE219;
+    color: #282828;
+}
+
+.btn-primary-b{
+    background-color: #FBE219;
+    color: #282828;
+    padding: 10px;
+    border: 1px solid #FBE219;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.7s all;
+    text-decoration: none;
+}
+
+.btn-primary-b:hover{
+    background-color: #282828;
+    color: #FBE219;
+    transition: 0.7s all;
+
+}
+
+.btn-secondary-b{
+    background-color: #282828;
+    color: #FBE219;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #FBE219;
+    font-weight: bold;
+    font-size: 17px;
+    transition: 0.7s all;
+    text-decoration: none;
+}
+
+.btn-secondary-b:hover{
+    background-color: #FBE219;
+    color: #282828;
+    transition: 0.7s all;
+}
+
+.form-field-title{
+    font-size: 1.4em;
+    font-weight: 700;
+    color: #FFF;
+}
