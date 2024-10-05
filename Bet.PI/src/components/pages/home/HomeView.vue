@@ -6,6 +6,7 @@ import InMoment from '@/components/bets/InMoment.vue';
     <div class="mt-4 hall d-flex flex-column align-items-center gap-3">
         <InMoment />
     </div>
+   
 </template>
 
 <style scoped>

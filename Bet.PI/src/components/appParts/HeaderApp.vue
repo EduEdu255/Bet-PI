@@ -3,6 +3,7 @@ import { ref, onMounted } from 'vue';
 import * as app from '@/stores/app-store';
 import {headerMenus as headerMenus} from '@/menus';
 
+
 const menus = ref([]);
 const currentUser = (
     {
@@ -25,12 +26,14 @@ onMounted(() => {
     user.value.id = 10;
     console.log(user.value);
 });
+
 </script>
 
 <template>
     <div id="app-header">
         <a href="/" class="header-logo">
             <!-- <img v-if="false" alt="Vue logo" src="@/assets/logo.png"> -->
+            <img alt="Vue logo" src="@/assets/logo.svg">
         </a>
         <!-- Header Menus -->
         <div class="header-menus d-flex align-items-center ml-auto">
@@ -82,6 +85,7 @@ onMounted(() => {
     padding: 1rem 1rem;
     height: 80px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #015440;
 }
 
 .header-logo{
