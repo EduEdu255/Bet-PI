@@ -18,7 +18,7 @@ import FooterApp from '@/components/appParts/FooterApp.vue';
 
 <style scoped>
 #app {
-  position: absolute;
+  position: relative; /* Alterado de absolute para relative */
   top: 0;
   left: 0;
   width: 100%;
@@ -30,10 +30,12 @@ import FooterApp from '@/components/appParts/FooterApp.vue';
   color: #2c3e50;
   display: flex;
   flex-direction: column;
+  overflow: hidden; /* Adicionado para evitar overflow */
 }
 
 #app span,
 #app p {
   color: #2c3e50;
 }
+
 </style>
