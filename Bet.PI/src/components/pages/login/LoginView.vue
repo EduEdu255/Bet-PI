@@ -50,17 +50,21 @@ watch(hasLogged, (v) => {
                               <label for="senha" class="align-self-start form-field-title">Senha</label>
                               <input @input="(e) => form['password'] = e.target.value" type="password" name="password" placeholder="Senha" class="form-control" />
                         </div>
+                        
                         <div class="login-actions d-flex flex-column gap-2">
                         <button @click="login" type="button" class="btn-primary-b">
                               Entrar
                         </button>
-                        <RouterLink class="btn-secondary-b" to="/my-account/recovery">
-                              Esqueceu a senha?
-                        </RouterLink>
-                        <RouterLink class="btn" to="/create-account">
-                              Criar Conta
-                        </RouterLink>
-                  </div>
+                        
+                        </div>
+                        <div class="d-flex flex-column justify-content-between align-items-start gap-2">
+                              <RouterLink class="link-color-primary" to="/my-account/recovery">
+                                    Esqueceu a senha?
+                              </RouterLink>
+                              <RouterLink class="link-color-primary" to="/create-account">
+                                    <span class="link-color-alternative">Não possui conta? </span>Cadastre-se
+                              </RouterLink>
+                        </div>
                         
                   </form>
                   <!-- Actions -->

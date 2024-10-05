@@ -55,3 +55,31 @@
     font-weight: 700;
     color: #FFF;
 }
+
+.link-color-primary{
+    color: #FBE219;
+    font-size: 14px;
+}
+
+.link-color-primary:hover{
+    color: #282828;
+    text-decoration: underline;
+}
+
+
+.link-color-alternative{
+    color: #FFF;
+    font-size: 14px;
+}
+
+.titulo-4-white{
+    color: #FFF;
+    font-size: 1.3em;
+    font-weight: 500;
+}
+
+
+.paragrafo{
+    color: #FFF;
+    font-size: 0.8em;
+   }
