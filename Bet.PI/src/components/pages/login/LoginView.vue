@@ -55,7 +55,7 @@ watch(hasLogged, (v) => {
                               Entrar
                         </button>
                         <RouterLink class="btn-secondary-b" to="/my-account/recovery">
-                              Recuperar Conta
+                              Esqueceu a senha?
                         </RouterLink>
                         <RouterLink class="btn" to="/create-account">
                               Criar Conta
@@ -79,10 +79,13 @@ watch(hasLogged, (v) => {
 }
 
 .login-view {
-      width:410px;
-      height: 480px;
+      width:80%;
+      height: 100%;
       padding: 1rem 1rem;
       max-width: 410px;
+      min-width: 340px;
+      max-height: 480px;
+      min-height: 330px;
       border-radius: 0.4rem;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
       margin-top: 50px;
