@@ -30,7 +30,7 @@ watch(hasLogged, (v) => {
 </script>
 
 <template>
-      <div class="view">
+      <div class="view bg-primary-b">
             <!-- Login View -->
             <div class="login-view bg-secondary-b">
                   <div class="area-logo">

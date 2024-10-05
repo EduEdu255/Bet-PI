@@ -36,7 +36,7 @@ onMounted(() => {
             <img alt="Vue logo" src="@/assets/logo.svg">
         </a>
         <!-- Header Menus -->
-        <div class="header-menus d-flex align-items-center ml-auto">
+        <div class="header-menus d-flex align-items-center ml-auto  ">
             <ul class="menu d-flex flex-wrap gap-2">
                 <template v-if="user?.id">
                     <li v-for="menu in menus" :key="menu?.path" class="menu-item">

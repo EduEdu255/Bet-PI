@@ -3,7 +3,7 @@ import InMoment from '@/components/bets/InMoment.vue';
 </script>
 
 <template>
-    <div class="mt-4 hall d-flex flex-column align-items-center gap-3">
+    <div class="mt-4 hall d-flex flex-column align-items-center gap-3 bg-primary-b">
         <InMoment />
     </div>
    
