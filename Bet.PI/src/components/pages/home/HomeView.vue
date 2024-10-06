@@ -9,16 +9,18 @@ import promocaoImage from '@/assets/images/imagem_home1.png';
             <div class="text-start  w-50"> 
                 <h2 class="text-foco">Oferta de Abertura de Conta</h2>
                 <h2 class="rubik-title display-5">Você receberá 50% do valor do seu depósito qualificativo em Créditos de Aposta (até R$500)</h2>
-                <button>Criar Conta</button>
+                <button class="criar-conta">Criar Conta</button>
             </div>
-            <div class="w-50 h-50">
+            <div class="imagem-home w-50 h-50">
                 <img :src="promocaoImage" alt="Promoção de Abertura de Conta" />
             </div>
         </main>
 
+        <h1 class="apostas">Apostas Esportivas</h1>
+
         <InMoment />
 
-        <h1>Teste</h1>
+        
     </div>
 </template>
 
@@ -29,8 +31,16 @@ template{
 
 .text-start {
     padding: 65px;
-    padding-right: 200px;
+    padding-right: 150px;
     
+}
+
+.imagem-home{
+    margin-left: 50px;
+}
+
+.apostas{
+    font-weight: 600;
 }
 
 .rubik-title {
@@ -40,7 +50,22 @@ template{
 }
 
 .text-foco{
-    color: #FBE219;
+    color: #FBE319;
+    font-weight: 600;
+}
+
+.criar-conta{
+    padding: 10px 30px;
+    background-color: #FBE319;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 700;
+    border: none;
+    border-radius: 5px;
+    margin-top: 25px;
+}
+
+.main-app{
+    background-color: #282828;
 }
 </style>
 

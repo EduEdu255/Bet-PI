@@ -15,7 +15,7 @@ onMounted(() => {
 <template>
     <div class='placar row gap-2 ml-auto mr-auto p-0 rounded'>
         <template v-for='item in items'>
-            <div class='item col-12 row d-flex align-items-center w-100'>
+            <div class='item col-12 row d-flex align-items-center p-5'>
                 <!-- Competição -->
                 <div class='col-4'>
                     {{ item.title }}
@@ -54,4 +54,5 @@ onMounted(() => {
 .placar .item:nth-child(2n + 1) {
     background: #f8f9fa;
 }
+
 </style>
