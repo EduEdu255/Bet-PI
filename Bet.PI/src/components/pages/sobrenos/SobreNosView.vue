@@ -37,6 +37,22 @@
                 </div>
             </div>
         </section>
+
+        <section class="bg-alternative-b section-container d-flex justify-content-center align-items-center">
+            <div class="container row">
+                <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center">
+                    <h2>Quem somos?</h2>
+                    <p class="paragrafo-type-b">
+                        A bet.pi é uma plataforma de apostas online criada para oferecer uma experiência segura, emocionante e inovadora aos nossos usuários. Combinamos tecnologia de ponta e uma equipe dedicada para garantir que cada aposta seja justa e transparente, além de proporcionar entretenimento de alta qualidade.
+                    </p>
+                </div>
+                <div class="col-12 col-md-6 d-flex justify-content-center">
+                    <div class="image-container">
+                        <img src="../../../assets/images/pexels-andrea-zanon-125322077-27440685-removebg-preview.png" />
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
 </template>
 
