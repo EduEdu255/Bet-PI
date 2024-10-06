@@ -13,5 +13,10 @@ export const headerMenus  = [
         path: '/sobrenos',
         name: 'About-us',
         role: ['empresa', 'usuario', 'admin']
+    },
+    {
+        path: '/cadastrar',
+        name: 'Cadastrar',
+        role: ['empresa', 'usuario', 'admin']
     }
 ];
