@@ -62,7 +62,7 @@ onMounted(() => {
 
 .back-aposta{
     text-align: start;
-    background-color: #454545;
+    background-color:   ;
     height: 100px;
     width: 1080px;
     border-radius: 15px ;

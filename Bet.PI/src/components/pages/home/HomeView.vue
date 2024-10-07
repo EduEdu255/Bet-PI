@@ -30,7 +30,7 @@ import { RouterLink } from 'vue-router';
 </template>
 
 <style scoped>
-.main-app{
+body{
     background-color: #282828;
 }
 .button{
@@ -82,6 +82,11 @@ template{
 
 .main-app{
     background-color: #282828;
+}
+main{
+    background-color: #222222;
+    margin-top: -30px;
+    margin-bottom: 30px;
 }
 </style>
 

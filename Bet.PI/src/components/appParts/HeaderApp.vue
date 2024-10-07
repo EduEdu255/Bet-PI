@@ -35,7 +35,7 @@ onMounted(() => {
 
 <template>
     <div id="app-header">
-        <a href="/" class="header-logo">
+        <a href="/home" class="header-logo">
             <!-- <img v-if="false" alt="Vue logo" src="@/assets/logo.png"> -->
             <img alt="Vue logo" src="@/assets/logo.svg">
         </a>
@@ -49,8 +49,8 @@ onMounted(() => {
                         </RouterLink>
                     </li>
                 </template>
-                <li class="ml-auto" v-if="!user?.id">
-                    <RouterLink to="/login">
+                <li class=" ml-auto" v-if="!user?.id">
+                    <RouterLink to="/login" class="login">
                         Login
                     </RouterLink>
                 </li>
@@ -143,5 +143,12 @@ onMounted(() => {
     
     border: 25px;
     
+}
+.login{
+    background-color: #FBE319;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color:black;
+    font-weight: 600;
 }
 </style>
