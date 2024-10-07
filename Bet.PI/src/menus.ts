@@ -18,5 +18,10 @@ export const headerMenus  = [
         path: '/cadastrar',
         name: 'Cadastrar',
         role: ['empresa', 'usuario', 'admin']
+    },
+    {
+        path: '/historico',
+        name: 'Historico',
+        role: ['empresa', 'usuario', 'admin']
     }
 ];

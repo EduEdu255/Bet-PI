@@ -23,6 +23,11 @@
     background-color: #006149;
     color: #FBE219;
 }
+
+.bg-standard-b{
+    background-color: #FFF;
+    color: #000;
+}
 .btn-primary-b{
     background-color: #FBE219;
     color: #282828;
@@ -59,6 +64,26 @@
     color: #282828;
     transition: 0.7s all;
 }
+
+.btn-tertiary-b{
+    background-color: #FFF;
+    padding: 10px;
+    font-size: 17px;
+    border: 2px solid #FF2F2F;
+    border-radius: 8px;
+    font-weight: bold;
+    font-weight: 600;
+    color: #FF2F2F;
+    transition: 0.7s all;
+}
+
+.btn-tertiary-b:hover{
+    background-color: #FF2F2F;
+    border: 2px solid #FFF;
+    color: #FFF;
+}
+
+
 
 .form-field-title{
     font-size: 1.4em;
