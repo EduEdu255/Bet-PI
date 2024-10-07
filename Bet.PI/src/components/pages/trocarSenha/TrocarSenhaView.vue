@@ -53,27 +53,19 @@ watch(hasLogged, (v) => {
                   <!-- Forms -->
                   <form class="login-forms d-flex flex-column gap-2">
                         <div class="d-flex flex-column gap-2">
-                              <label for="email" class="align-self-start form-field-title">Email</label>
-                              <input @input="(e) => form['email'] = e.target.value" type="email" name="email" placeholder="Email" class="form-control" />
+                              <label for="senha" class="align-self-start form-field-title">Nova senha:</label>
+                              <input @input="(e) => form['password'] = e.target.value" type="password" name="password" placeholder="Senha" class="form-control" />
                         </div>
                         <div class="d-flex flex-column gap-2">
-                              <label for="senha" class="align-self-start form-field-title">Senha</label>
-                              <input @input="(e) => form['password'] = e.target.value" type="password" name="password" placeholder="Senha" class="form-control" />
+                              <label for="nova-senha" class="align-self-start form-field-title">Repetir nova senha:</label>
+                              <input @input="(e) => form['nova-senha'] = e.target.value" type="password" name="nova-senha" placeholder="Nova senha" class="form-control" />
                         </div>
                         
                         <div class="login-actions d-flex flex-column gap-2">
                         <button @click="login" type="button" class="btn-primary-b">
-                              Entrar
+                              Alterar
                         </button>
                         
-                        </div>
-                        <div class="d-flex flex-column justify-content-between align-items-start gap-2">
-                              <RouterLink class="link-color-primary" to="/trocar-senha">
-                                    Esqueceu a senha?
-                              </RouterLink>
-                              <RouterLink class="link-color-primary" to="/cadastrar">
-                                    <span class="link-color-alternative">Não possui conta? </span>Cadastre-se
-                              </RouterLink>
                         </div>
                         
                   </form>
