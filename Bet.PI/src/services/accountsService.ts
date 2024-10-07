@@ -4,8 +4,12 @@ export const load = async () => {
     return await api.get('accounts/');
 }
 
+export const me = async () => {
+    return await api.get('auth/me/');
+}
+
 export const login = async (form) => {
-    return await api.post('login/', form);
+    return await api.post('auth/login/', form);
 }
 
 export const fetchId = async (id) => {
