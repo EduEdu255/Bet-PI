@@ -71,7 +71,7 @@ watch(hasLogged, (v) => {
                               <RouterLink class="link-color-primary" to="/my-account/recovery">
                                     Esqueceu a senha?
                               </RouterLink>
-                              <RouterLink class="link-color-primary" to="/create-account">
+                              <RouterLink class="link-color-primary" to="/cadastrar">
                                     <span class="link-color-alternative">Não possui conta? </span>Cadastre-se
                               </RouterLink>
                         </div>

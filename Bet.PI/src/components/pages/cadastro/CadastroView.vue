@@ -65,7 +65,7 @@ watch(hasLogged, (v) => {
                               </button>
                         </div>
                         <div class="d-flex flex-column justify-content-between align-items-center gap-2">
-                              <RouterLink class="link-color-primary" to="/my-account/recovery">
+                              <RouterLink class="link-color-primary" to="/login">
                                     <span class="link-color-alternative">Já possui conta? </span>Entrar
                               </RouterLink>
                         </div>
