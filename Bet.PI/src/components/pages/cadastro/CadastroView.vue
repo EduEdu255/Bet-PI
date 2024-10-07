@@ -1,5 +1,5 @@
 <script setup>
-import { login as accountLogin, me} from '@/services/accountsService';
+import { login as accountLogin} from '@/services/accountsService';
 import { onMounted, ref, watch } from 'vue';
 import * as app from '@/stores/app-store';
 import router from '@/router';
@@ -14,26 +14,16 @@ onMounted(() => {
 
 const login = async () => {
       let data = await accountLogin(form.value);
-
+      
       app.app().set({
-            'token' : data.access_token,
+            'token' : data.token,
+            'user' : data.user
       });
-
-      let user = await me();
-
-      if (user?.id) {
-            app.app().set({
-                  'token' : data.access_token,
-                  'user': user
-            });
-
-            hasLogged.value = true;
-      }
 }
 
 watch(hasLogged, (v) => {
       if (v) {
-            router.push('/home');
+            router.push('/events');
       }
 });
 
@@ -42,7 +32,7 @@ watch(hasLogged, (v) => {
 <template>
       <div class="view bg-primary-b">
             <!-- Login View -->
-            <div class="login-view bg-secondary-b">
+            <div class="cadastro-view bg-secondary-b m-4">
                   <div class="area-logo">
                         <svg width="121" height="48" viewBox="0 0 121 48" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M3.8 37C3.50667 37 3.26667 36.9067 3.08 36.72C2.89333 36.5333 2.8 36.2933 2.8 36V10C2.8 9.70667 2.89333 9.46667 3.08 9.28C3.26667 9.09333 3.50667 9 3.8 9H16C18.2933 9 20.1733 9.32 21.64 9.96C23.1067 10.6 24.1867 11.52 24.88 12.72C25.6 13.8933 25.96 15.2933 25.96 16.92C25.96 17.88 25.7733 18.7333 25.4 19.48C25.0533 20.2 24.6133 20.8 24.08 21.28C23.5733 21.76 23.0933 22.1067 22.64 22.32C23.6533 22.8 24.5467 23.5867 25.32 24.68C26.12 25.7733 26.52 27.0533 26.52 28.52C26.52 30.28 26.12 31.8 25.32 33.08C24.5467 34.3333 23.4 35.3067 21.88 36C20.3867 36.6667 18.5467 37 16.36 37H3.8ZM9.96 31.8H15.56C16.7067 31.8 17.5733 31.4667 18.16 30.8C18.7467 30.1333 19.04 29.3733 19.04 28.52C19.04 27.5867 18.7333 26.8 18.12 26.16C17.5333 25.52 16.68 25.2 15.56 25.2H9.96V31.8ZM9.96 20.12H15.2C16.2933 20.12 17.1067 19.84 17.64 19.28C18.2 18.72 18.48 18 18.48 17.12C18.48 16.2667 18.2 15.5733 17.64 15.04C17.1067 14.48 16.2933 14.2 15.2 14.2H9.96V20.12ZM40.1241 37.4C36.9774 37.4 34.4707 36.5467 32.6041 34.84C30.7374 33.1333 29.7641 30.6 29.6841 27.24C29.6841 27.0533 29.6841 26.8133 29.6841 26.52C29.6841 26.2267 29.6841 26 29.6841 25.84C29.7641 23.7333 30.2307 21.9333 31.0841 20.44C31.9641 18.92 33.1641 17.7733 34.6841 17C36.2307 16.2 38.0307 15.8 40.0841 15.8C42.4307 15.8 44.3641 16.2667 45.8841 17.2C47.4307 18.1333 48.5907 19.4 49.3641 21C50.1374 22.6 50.5241 24.4267 50.5241 26.48V27.44C50.5241 27.7333 50.4174 27.9733 50.2041 28.16C50.0174 28.3467 49.7907 28.44 49.5241 28.44H36.7241C36.7241 28.4667 36.7241 28.5067 36.7241 28.56C36.7241 28.6133 36.7241 28.6667 36.7241 28.72C36.7507 29.4933 36.8841 30.2 37.1241 30.84C37.3641 31.48 37.7374 31.9867 38.2441 32.36C38.7507 32.7333 39.3641 32.92 40.0841 32.92C40.6174 32.92 41.0574 32.84 41.4041 32.68C41.7774 32.4933 42.0841 32.2933 42.3241 32.08C42.5641 31.84 42.7507 31.64 42.8841 31.48C43.1241 31.2133 43.3107 31.0533 43.4441 31C43.6041 30.92 43.8441 30.88 44.1641 30.88H49.1241C49.3907 30.88 49.6041 30.96 49.7641 31.12C49.9507 31.2533 50.0307 31.4533 50.0041 31.72C49.9774 32.1733 49.7507 32.72 49.3241 33.36C48.8974 34 48.2707 34.64 47.4441 35.28C46.6441 35.8933 45.6307 36.4 44.4041 36.8C43.1774 37.2 41.7507 37.4 40.1241 37.4ZM36.7241 24.48H43.4841V24.4C43.4841 23.5467 43.3507 22.8 43.0841 22.16C42.8441 21.52 42.4574 21.0267 41.9241 20.68C41.4174 20.3333 40.8041 20.16 40.0841 20.16C39.3641 20.16 38.7507 20.3333 38.2441 20.68C37.7641 21.0267 37.3907 21.52 37.1241 22.16C36.8574 22.8 36.7241 23.5467 36.7241 24.4V24.48ZM64.875 37C63.1683 37 61.6883 36.7333 60.435 36.2C59.2083 35.64 58.2617 34.7867 57.595 33.64C56.9283 32.4667 56.595 30.96 56.595 29.12V21.44H53.475C53.1817 21.44 52.9283 21.3467 52.715 21.16C52.5283 20.9733 52.435 20.7333 52.435 20.44V17.2C52.435 16.9067 52.5283 16.6667 52.715 16.48C52.9283 16.2933 53.1817 16.2 53.475 16.2H56.595V9.6C56.595 9.30666 56.6883 9.06667 56.875 8.88C57.0883 8.69333 57.3283 8.6 57.595 8.6H62.235C62.5283 8.6 62.7683 8.69333 62.955 8.88C63.1417 9.06667 63.235 9.30666 63.235 9.6V16.2H68.235C68.5283 16.2 68.7683 16.2933 68.955 16.48C69.1417 16.6667 69.235 16.9067 69.235 17.2V20.44C69.235 20.7333 69.1417 20.9733 68.955 21.16C68.7683 21.3467 68.5283 21.44 68.235 21.44H63.235V28.56C63.235 29.4667 63.4083 30.1867 63.755 30.72C64.1017 31.2533 64.6883 31.52 65.515 31.52H68.595C68.8883 31.52 69.1283 31.6133 69.315 31.8C69.5017 31.9867 69.595 32.2267 69.595 32.52V36C69.595 36.2933 69.5017 36.5333 69.315 36.72C69.1283 36.9067 68.8883 37 68.595 37H64.875Z" fill="white"/>
@@ -51,28 +41,32 @@ watch(hasLogged, (v) => {
                         </svg>
                   </div>
                   <!-- Forms -->
-                  <form class="login-forms d-flex flex-column gap-2">
+                  <form class="cadastro-forms d-flex flex-column gap-2">
+                        <div class="d-flex flex-column gap-2">
+                              <label for="nome" class="align-self-start form-field-title">Nome</label>
+                              <input @input="(e) => form['nome'] = e.target.value" type="nome" name="nome" placeholder="Nome" class="form-control" />
+                        </div>
                         <div class="d-flex flex-column gap-2">
                               <label for="email" class="align-self-start form-field-title">Email</label>
                               <input @input="(e) => form['email'] = e.target.value" type="email" name="email" placeholder="Email" class="form-control" />
+                        </div>
+                        <div class="d-flex flex-column gap-2">
+                              <label for="cpf" class="align-self-start form-field-title">CPF</label>
+                              <input @input="(e) => form['cpf'] = e.target.value" type="cpf" name="cpf" placeholder="Ex.: 000.000.000-00" class="form-control" />
                         </div>
                         <div class="d-flex flex-column gap-2">
                               <label for="senha" class="align-self-start form-field-title">Senha</label>
                               <input @input="(e) => form['password'] = e.target.value" type="password" name="password" placeholder="Senha" class="form-control" />
                         </div>
                         
-                        <div class="login-actions d-flex flex-column gap-2">
-                        <button @click="login" type="button" class="btn-primary-b">
-                              Entrar
-                        </button>
-                        
+                        <div class="cadastro-actions d-flex flex-column gap-2">
+                              <button @click="cadastro" type="button" class="btn-primary-b">
+                                    Entrar
+                              </button>
                         </div>
-                        <div class="d-flex flex-column justify-content-between align-items-start gap-2">
+                        <div class="d-flex flex-column justify-content-between align-items-center gap-2">
                               <RouterLink class="link-color-primary" to="/my-account/recovery">
-                                    Esqueceu a senha?
-                              </RouterLink>
-                              <RouterLink class="link-color-primary" to="/create-account">
-                                    <span class="link-color-alternative">Não possui conta? </span>Cadastre-se
+                                    <span class="link-color-alternative">Já possui conta? </span>Entrar
                               </RouterLink>
                         </div>
                         
@@ -92,14 +86,14 @@ watch(hasLogged, (v) => {
       align-items: flex-start;
 }
 
-.login-view {
+.cadastro-view {
       width:80%;
       height: 100%;
       padding: 1rem 1rem;
       max-width: 410px;
       min-width: 340px;
-      max-height: 480px;
-      min-height: 330px;
+      max-height: 580px;
+      min-height: 300px;
       border-radius: 0.4rem;
       box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
       margin-top: 50px;
@@ -108,13 +102,13 @@ watch(hasLogged, (v) => {
       gap: 40px;
 }
 
-.login-view h4 {
+.cadastro-view h4 {
       font-size: 1.4rem;
       margin: 0 0;
       margin-bottom: 1.5rem
 }
 
-.login-actions {
+.cadastro-actions {
       margin-top: 1.75rem;
 }
 </style>

@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 import * as app from '@/stores/app-store';
 import {headerMenus as headerMenus} from '@/menus';
-
+import router from '@/router';
 
 const menus = ref([]);
 const currentUser = (
@@ -19,12 +19,16 @@ const loadMenus = () => {
     menus.value = auxMenus;
 }
 
+const logout = () => {
+    app.app().set(null);
+    router.push('/login');
+}
+
 onMounted(() => {
     loadMenus();
 
-    user.value = app.app().get() ?? {id: 10};
-    user.value.id = 10;
-    console.log(user.value);
+    user.value = app.app().get()?.user;
+    console.log(user.value, `.....`)
 });
 
 </script>
@@ -59,15 +63,15 @@ onMounted(() => {
                     <img src="" />
                 </div>
                 <span class="user-name">
-                    {{ user?.name }}
+                    {{ user?.nome }}
                 </span>
             </div>
             <!-- Sair -->
             <ul class="menu d-flex flex-wrap gap-2">
                 <li class="menu-item">
-                    <RouterLink :to="'/login'">
+                    <button @click="logout">
                         Sair
-                    </RouterLink>
+                    </button>
                 </li>
             </ul>
          </div>

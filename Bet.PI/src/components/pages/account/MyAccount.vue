@@ -1,7 +1,13 @@
 <script setup lang="ts">
 
-import { ref } from 'vue';
+import { login as accountLogin, me} from '@/services/accountsService';
+import { onMounted, ref, watch } from 'vue';
+
 const form = ref({});
+
+onMounted(async () => {
+    form.value = await me();
+})
 
 const submitForm = async () => {
     alert('submit');
@@ -19,7 +25,8 @@ const submitForm = async () => {
             <div class="form-group ">
                 <label>Nome completo</label>
                 <input 
-                    type="text" 
+                    type="text"
+                    :value="form.nome"
                     @change="(e) => form.name = e.target.value"
                     class="form-control"
                     placeholder="Seu nome"
@@ -30,6 +37,7 @@ const submitForm = async () => {
                 <label>Email</label>
                 <input 
                     type="email" 
+                    :value="form.email"
                     @change="(e) => form.email = e.target.value"
                     class="form-control"
                     id="exampleInputEmail1"

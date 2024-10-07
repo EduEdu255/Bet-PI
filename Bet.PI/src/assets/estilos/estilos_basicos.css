@@ -69,11 +69,14 @@
 .link-color-primary{
     color: #FBE219;
     font-size: 14px;
+    transition: 0.7s all;
 }
 
 .link-color-primary:hover{
     color: #282828;
     text-decoration: underline;
+    transition: 0.7s all;
+
 }
 
 
