@@ -19,5 +19,6 @@
 .main-app {
     min-height: 100%;
     overflow: auto;
+    background-color: #282828;
 }
 </style>

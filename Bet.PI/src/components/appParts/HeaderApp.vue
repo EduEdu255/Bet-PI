@@ -121,17 +121,23 @@ onMounted(() => {
 .menu {
     display:flex;
     align-items:center;
+    
     margin-bottom: 0px;
+    background-color: black;
 }
 
 .menu .menu-item a{
-    background-color: #fafafa !important;
-    color: #49784d;
+    font-weight: 600;
+    background-color: none;
+    color:#fafafa;
     box-shadow: none;
     padding: 0.45rem !important;
 }
 
 .menu .menu-item a:hover{
-    background-color: var(--primary-color) !important;
+    color: #FBE319;
+    
+    border: 25px;
+    
 }
 </style>

@@ -1,9 +1,11 @@
+
+
 export const get = async () => {
     return [
         {
             title: 'Fortaleza x Ceará',
-            logo_time_1: '',
-            logo_time_2: '',
+            logo_time_1: "/Bet.PI/src/assets/images/logo-vasco.png",
+            logo_time_2: "",
             placar: '2 x 1',
             live: true,
             id: 1,
@@ -17,7 +19,7 @@ export const get = async () => {
             id: 2,
         },
         {
-            title: 'Sãoo Paulo x Fortaleza',
+            title: 'São Paulo x Fortaleza',
             logo_time_1: '',
             logo_time_2: '',
             placar: '2 x 3',

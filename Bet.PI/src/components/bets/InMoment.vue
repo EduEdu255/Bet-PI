@@ -13,9 +13,14 @@ onMounted(() => {
 </script>
 
 <template>
-    <div class='placar row gap-2 ml-auto mr-auto p-0 rounded'>
+    <div class="back-aposta d-flex">
+        <img src="@/assets/Bola.svg" alt="Bola" class="bola">
+        <h3>Partidas Baseadas em resultados</h3>
+        
+    </div>
+        <div class='placar row gap-2  ml-auto mr-auto p-0 rounded'>
         <template v-for='item in items'>
-            <div class='item col-12 row d-flex align-items-center p-5'>
+            <div class='item col-12 row d-flex align-items-center w-100 p-5'>
                 <!-- Competição -->
                 <div class='col-4'>
                     {{ item.title }}
@@ -26,33 +31,80 @@ onMounted(() => {
                 </div>
                 <!-- Apostar -->
                 <div class='col-4 d-flex ml-auto'>
-                    <RouterLink class='btn btn-primary p-1 ml-auto' :to="`/games/${item?.id}/make-bet`">
+                    <RouterLink class='button btn   ml-auto' :to="`/games/${item?.id}/make-bet`">
                         Apostar
                     </RouterLink>
                 </div>
             </div>
         </template>
+    
+
     </div>
+    
 </template>
 
 <style scoped>
+
+.bola{
+
+    margin-bottom: 10px;
+}
+.img-fluid{
+    width: 10px;
+}
 .placar {
-    max-width: 450px;
+    width: 1080px;
     background-color: var(----bg-template);
     border:1px solid #e9ecef;
+    margin-bottom: 50px;
+    
 }
 
-.placar .item {
-    color: #495057;
+.back-aposta{
+    text-align: start;
+    background-color: #454545;
+    height: 100px;
+    width: 1080px;
+    border-radius: 15px ;
+    margin-bottom: -30px;
+    align-items: center;
+    gap: 25px;
+    padding-left: 20px;
+    
+    
+}
+.back-aposta h3{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.placar .item { 
+    color: 373737;
     margin: 0 !important;
+    width: 100%;
+    
+    font-weight: 700;
+    
+}
+
+.placar .title{
+    color: white;
 }
 
 .placar .item {
     background-color: var(----bg-template);
 }
 
-.placar .item:nth-child(2n + 1) {
-    background: #f8f9fa;
+.placar .item{
+    background: #373737;
+
+    
 }
+
+.button{
+    background-color: #FBE219;
+    font-weight: 600;
+}
+
 
 </style>

@@ -1,7 +1,7 @@
 export const headerMenus  = [
     {
         path: '/home',
-        name: 'Ínicio',
+        name: 'Todos os Jogos',
         role: ['admin', 'empresa', 'usuario']
     },
     {
@@ -11,7 +11,7 @@ export const headerMenus  = [
     },
     {
         path: '/sobrenos',
-        name: 'About-us',
+        name: 'Sobre',
         role: ['empresa', 'usuario', 'admin']
     }
 ];
