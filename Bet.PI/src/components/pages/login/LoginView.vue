@@ -1,5 +1,5 @@
 <script setup>
-import { login as accountLogin} from '@/services/accountsService';
+import { login as accountLogin, me} from '@/services/accountsService';
 import { onMounted, ref, watch } from 'vue';
 import * as app from '@/stores/app-store';
 import router from '@/router';
@@ -14,16 +14,26 @@ onMounted(() => {
 
 const login = async () => {
       let data = await accountLogin(form.value);
-      
+
       app.app().set({
-            'token' : data.token,
-            'user' : data.user
+            'token' : data.access_token,
       });
+
+      let user = await me();
+
+      if (user?.id) {
+            app.app().set({
+                  'token' : data.access_token,
+                  'user': user
+            });
+
+            hasLogged.value = true;
+      }
 }
 
 watch(hasLogged, (v) => {
       if (v) {
-            router.push('/events');
+            router.push('/home');
       }
 });
 
