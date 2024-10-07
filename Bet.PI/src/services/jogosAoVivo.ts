@@ -4,7 +4,7 @@ export const get = async () => {
     return [
         {
             title: 'Fortaleza x Ceará',
-            logo_time_1: "/Bet.PI/src/assets/images/logo-vasco.png",
+            logo_time_1: "@/assets/logo.svg",
             logo_time_2: "",
             placar: '2 x 1',
             live: true,

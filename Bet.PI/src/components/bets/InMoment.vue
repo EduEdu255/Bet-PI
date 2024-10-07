@@ -25,6 +25,9 @@ onMounted(() => {
                 <div class='col-4'>
                     {{ item.title }}
                 </div>
+                <div>
+                    <img :src="'@/assets/logo.svg'" alt="" class="img_bola">
+                </div>
                 <!-- Placar -->
                 <div class='col-4'>
                     {{ item.placar }}
@@ -45,13 +48,11 @@ onMounted(() => {
 
 <style scoped>
 
-.bola{
+.img_bola{
+    width: 100px;
+    height: 100px;
+}
 
-    margin-bottom: 10px;
-}
-.img-fluid{
-    width: 10px;
-}
 .placar {
     width: 1080px;
     background-color: var(----bg-template);
