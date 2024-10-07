@@ -127,7 +127,7 @@ onMounted(() => {
     align-items:center;
     
     margin-bottom: 0px;
-    background-color: black;
+    
 }
 
 .menu .menu-item a{
