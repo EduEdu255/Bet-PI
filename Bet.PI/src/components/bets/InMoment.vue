@@ -25,9 +25,6 @@ onMounted(() => {
                 <div class='col-4'>
                     {{ item.title }}
                 </div>
-                <div>
-                    <img :src="'@/assets/logo.svg'" alt="" class="img_bola">
-                </div>
                 <!-- Placar -->
                 <div class='col-4'>
                     {{ item.placar }}
