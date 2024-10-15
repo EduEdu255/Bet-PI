@@ -11,7 +11,7 @@ import { RouterLink } from 'vue-router';
                 <h2 class="text-foco">Oferta de Abertura de Conta</h2>
                 <h2 class="rubik-title display-5">Você receberá 50% do valor do seu depósito qualificativo em Créditos de Aposta (até R$500)</h2>
                 
-                <RouterLink class='button btn   ml-auto' :to="`'/create-account'`">
+                <RouterLink class='button btn   ml-auto' :to="`/cadastrar`">
                     Criar Conta
                 </RouterLink>
             </div>

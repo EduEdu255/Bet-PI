@@ -151,4 +151,10 @@ onMounted(() => {
     color:black;
     font-weight: 600;
 }
+.login:hover{
+    border: 1px solid white;
+    color: #fafafa;
+    background: none;
+}
+
 </style>

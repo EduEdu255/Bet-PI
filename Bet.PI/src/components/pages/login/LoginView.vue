@@ -84,6 +84,15 @@ watch(hasLogged, (v) => {
 </template>
 
 <style scoped>
+button{
+      margin-bottom: 25px;
+}
+
+button:hover{
+      background: none;
+      border: 1px solid white;
+      color: white;
+}
 .view {
       display: flex;
       width: 100vw;
