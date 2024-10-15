@@ -39,7 +39,7 @@ const valorAposta = (valor) => {
 
 <template>
     <div class="make-bet d-flex flex-column align-items-center gap-3">
-        <div class='bg-dark w-100 text-light'>
+        <div class='make-aposta w-100 text-light'>
             <div class='make-bet-header'>
                 <h4 class='p-2'>
                     Realizar Aposta
@@ -70,7 +70,7 @@ const valorAposta = (valor) => {
         </div>
 
        <!-- Form -->
-       <div class='game-bet bg-light p-4 mt-5'>
+       <div class='game-bet  p-4 mt-5'>
             <h6>
                 Qual é a sua aposta?
             </h6>
@@ -121,7 +121,7 @@ const valorAposta = (valor) => {
 
             <!-- Finalizar Aposta -->
             <div class='end-bet mt-4 rounded mb-4'>
-                <label>Valor da Aposta</label>
+                <label class="bet-value">Valor da Aposta</label>
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <span class="input-group-text">$</span>
@@ -134,16 +134,84 @@ const valorAposta = (valor) => {
             </div>
 
             <button type="button" class='btn btn-primary'>
-                Fidelizar Aposta
+                Finalizar Aposta
             </button>
        </div>
     </div>
 </template>
 
 <style scoped>
+
+.input-group-append .input-group-text{
+    border-radius: 0;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.btn{
+    background-color: #fbe319;
+    color: black;
+    font-weight: 600;
+    border: none
+}
+
+.btn:hover{
+    background-color: #373737;
+    color: white;
+    border: 1px solid white;
+}
+
+.bet-value{
+    color:white;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.form-control{
+    background: #282828;
+    color: white;
+}
+.form-control:focus{
+    background: #282828;
+    color: white;
+    border-color: #fbe319;
+    box-shadow: 0 0 5px #fbe319;
+    
+}
+
+.custom-select{
+    background-color:#282828;
+    border-top-right-radius: 7px;
+    border-bottom-right-radius: 7px;
+    color: white;
+    border: 1px solid white;
+    border-color: white;    
+}
+
+.input-group-text{
+    background-color: #222222;
+    color: white;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+h4 {
+    font-weight: 700;
+}
 .game-bet {
     width: 100%;
     max-width: 550px;
+    border-radius: 25px;
+    margin-bottom: 85px;
+    background-color: #373737;
+}
+
+h6{
+    color:white;
+    font-weight: 700;
+    font-size: 25px;
+    margin-bottom: 40px;
 }
 
 .game-bet select {
@@ -152,5 +220,10 @@ const valorAposta = (valor) => {
 
 .game-mode {
     max-width:350px
+}
+
+.make-aposta{
+    background-color:#222222;
+
 }
 </style>

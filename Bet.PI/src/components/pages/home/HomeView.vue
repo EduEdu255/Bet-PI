@@ -41,6 +41,10 @@ body{
     padding: 10px 30px;
 }
 
+.button:hover{
+    border: 1px solid white;
+}
+
 template{
     background-color: #282828;
 }

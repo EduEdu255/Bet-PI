@@ -104,5 +104,9 @@ onMounted(() => {
     font-weight: 600;
 }
 
+.button:hover{
+    border: 1px solid white;
+}
+
 
 </style>
