@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { app } from "@/stores/app-store.ts";
 
-const api_url = "http://localhost:8000/api";
+const api_url = "http://localhost:8001/api";
 
 export const api = {
     get : 
