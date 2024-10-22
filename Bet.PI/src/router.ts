@@ -3,6 +3,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 import LoginView from '@/components/pages/login/LoginView.vue'
 import HomeView from '@/components/pages/home/HomeView.vue'
 import SobreNosView from '@/components/pages/sobrenos/SobreNosView.vue'
+import AdministradoView from '@/components/pages/administrador/AdicionarApostaView.vue'
 import CadastroView from '@/components/pages/cadastro/CadastroView.vue'
 import HistoricoView from '@/components/pages/historico/HistoricoView.vue'
 import TrocarSenhaView from '@/components/pages/trocarSenha/TrocarSenhaView.vue'
@@ -15,6 +16,7 @@ const routes = [
   { path: '/login', component: LoginView },
   { path: '/home', component: HomeView},
   { path: '/sobrenos', component: SobreNosView},
+  { path: '/admin', component: AdministradoView},
   { path: '/cadastrar', component: CadastroView},
   { path: '/historico', component: HistoricoView},
   { path: '/trocar-senha', component: TrocarSenhaView},
