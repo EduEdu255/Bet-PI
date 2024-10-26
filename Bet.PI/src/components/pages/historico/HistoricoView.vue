@@ -48,6 +48,11 @@ import { RouterLink } from 'vue-router';
     font-weight: 600;
     padding: 10px 30px;
 }
+/*Richard: Centralizar button sair da conta*/
+.btn-tertiary-b {
+  display: block;
+  margin: 0 auto;
+}/*Richard*/
 
 template{
     background-color: #282828;
@@ -95,7 +100,7 @@ template{
 
 .dados{
     font-size: 1.4em;
-    color: #FF2F2F;
+    color: #015440;
     font-weight: 600;
 }
 
