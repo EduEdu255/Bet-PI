@@ -1,17 +1,23 @@
+import { ref } from 'vue';
+
+const appState = ref(null);
+
 export const app = () => {
     return {
         set: (data) => {
             localStorage.setItem('app', JSON.stringify(data));
+            appState.value = data;
         },
         get: () => {
-            let data = null;
-            try {
-                data = JSON.parse(localStorage.getItem('app'));
-            } catch (exc) {
-                console.log(exc);
+            if (appState.value === null) {
+                try {
+                    appState.value = JSON.parse(localStorage.getItem('app') || '{}') || {};
+                } catch (exc) {
+                    console.log(exc);
+                    appState.value = null;
+                }
             }
-
-            return data ? data: {};
+            return appState.value;
         }
     }
 }
