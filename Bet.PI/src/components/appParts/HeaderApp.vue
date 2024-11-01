@@ -71,7 +71,7 @@ onMounted(() => {
         <div class="header-user" v-if="user?.id">
             <div class="d-flex align-items-center">
                 <div class="user-photo">
-                    <img src="" />
+                    <span>{{ user?.nome.slice(0,1) }}</span>
                 </div>
                 <span class="user-name">
                     {{ user?.nome }}
@@ -119,11 +119,17 @@ onMounted(() => {
 }
 
 .header-user .user-photo {
+    display:flex;
+    align-items: center;
+    justify-content: center;
     width: 45px;
     height: 45px;
     margin: auto 0 auto 1rem;
     border-radius: 100%;
     background-color: var(--bg-template-ice);
+    font-weight: 600;
+    font-size: 1.5em;
+    color:#015440;
 }
 
 .user-name {
