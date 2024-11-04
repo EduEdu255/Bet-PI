@@ -87,6 +87,11 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
+
+* {
+    color: white;
+}
+
 .titulo-conta{
     color: #fbe319;
 }
