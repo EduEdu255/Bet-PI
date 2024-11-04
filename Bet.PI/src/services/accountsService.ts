@@ -24,6 +24,6 @@ export const update = async (id, form) => {
     return await api.put(`pessoas/${id}`, form);
 }
 
-export const remove = async (id) => {
+export const remove = async (id) => {   
     return await api.delete(`pessoas/${id}`);
 }
