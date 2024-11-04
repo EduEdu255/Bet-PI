@@ -33,6 +33,7 @@ export const api = {
     fetch: async (url : string, args : any) => {
 
         try {
+            app().update({ carregando: true });
             let init = {
                 method: args.method ?? 'GET',
                 mode: 'cors',
@@ -47,9 +48,10 @@ export const api = {
             }
 
             let data = await ( await fetch(`${api_url}/${url}`, init)).json();
-
+            app().update({ carregando: false });
             return data;
         } catch (exc) {
+            app().update({ carregando: false });
             console.log('<======= Error =====>', exc);
             return {};
         }

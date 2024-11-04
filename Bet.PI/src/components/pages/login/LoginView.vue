@@ -15,14 +15,14 @@ onMounted(() => {
 const login = async () => {
       let data = await accountLogin(form.value);
 
-      app.app().set({
+      app.app().update({
             'token' : data.access_token,
       });
 
       let user = await me();
 
       if (user?.id) {
-            app.app().set({
+            app.app().update({
                   'token' : data.access_token,
                   'user': user
             });

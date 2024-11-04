@@ -1,112 +1,102 @@
 <script setup lang='ts'>
 import { onMounted, ref } from 'vue';
-import * as jogosAoVivo from '@/services/jogosAoVivo';
+import { partidaService } from '@/services/partidaService';
+import { timeService } from '@/services/timeService';
 
-const items = ref([]);
+const partidas = ref([]);
+const times = ref([]);
 
 onMounted(() => {
-    jogosAoVivo.get().then((response : any) => {
-        items.value = response ?? [];
+    partidaService.load().then((result) => {
+        partidas.value = result.data;
+    });
+
+    timeService.load().then((result) => {
+        times.value = result.data;
     });
 });
 
+const getTimeName = (timeId) => {
+    const time = times.value.find(t => t.id === timeId);
+    return time ? time.name : 'Time não encontrado'; // Retorna 'Time não encontrado' se o time não for encontrado
+};
 </script>
 
 <template>
     <div class="back-aposta d-flex">
         <img src="@/assets/Bola.svg" alt="Bola" class="bola">
         <h3>Partidas Baseadas em resultados</h3>
-        
     </div>
-        <div class='placar row gap-2  ml-auto mr-auto p-0 rounded'>
-        <template v-for='item in items'>
+    
+    <div class='placar row gap-2 ml-auto mr-auto p-0 rounded'>
+        <template v-for='item in partidas' :key="item.id">
             <div class='item col-12 row d-flex align-items-center w-100 p-5'>
                 <!-- Competição -->
-                <div class='col-4'>
-                    {{ item.title }}
+                <div class='col-8 times-partida'>
+                    {{ getTimeName(item.time_casa_id) }} vs {{ getTimeName(item.time_visitante_id) }}
                 </div>
                 <!-- Placar -->
-                <div class='col-4'>
-                    {{ item.placar }}
-                </div>
+                
+                <!-- <div class='col-4 text-white'>
+                    {{ item.placar_casa }} - {{ item.placar_visitante }}
+                </div> -->  <!--Comentei porque de início não se tem um placar-->
+                
                 <!-- Apostar -->
                 <div class='col-4 d-flex ml-auto'>
-                    <RouterLink class='button btn   ml-auto' :to="`/games/${item?.id}/make-bet`">
+                    <RouterLink class='button btn ml-auto' :to="`/games/${item.id}/make-bet`">
                         Apostar
                     </RouterLink>
                 </div>
             </div>
         </template>
-    
-
     </div>
-    
 </template>
 
 <style scoped>
-
-.img_bola{
+.img_bola {
     width: 100px;
     height: 100px;
 }
-
 .placar {
     width: 1080px;
-    background-color: var(----bg-template);
-    border:1px solid #e9ecef;
+    border: 1px solid #e9ecef;
     margin-bottom: 50px;
-    
 }
 
-.back-aposta{
+.back-aposta {
     text-align: start;
-    background-color:   ;
     height: 100px;
     width: 1080px;
-    border-radius: 15px ;
+    border-radius: 15px;
     margin-bottom: -30px;
     align-items: center;
     gap: 25px;
     padding-left: 20px;
-    
-    
 }
-.back-aposta h3{
+
+.back-aposta h3 {
     font-size: 20px;
     font-weight: 600;
 }
 
 .placar .item { 
-    color: 373737;
+    color: #373737; 
     margin: 0 !important;
     width: 100%;
-    
     font-weight: 700;
-    
+    background: #373737; 
 }
-
-.placar .title{
-    color: white;
+.times-partida{
+    color: #fff;
 }
-
-.placar .item {
-    background-color: var(----bg-template);
-}
-
-.placar .item{
-    background: #373737;
-
-    
-}
-
-.button{
+.button {
     background-color: #FBE219;
     font-weight: 600;
 }
 
-.button:hover{
+.button:hover {
     border: 1px solid white;
+    color: #fff;
 }
-
 
 </style>

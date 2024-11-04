@@ -2,6 +2,7 @@
 import InMoment from '@/components/bets/InMoment.vue';
 import promocaoImage from '@/assets/images/imagem_home1.png';
 import { RouterLink } from 'vue-router';
+
 </script>
 
 <template >
