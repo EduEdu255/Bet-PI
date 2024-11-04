@@ -17,7 +17,7 @@ const submitForm = async () => {
 
 <template>
     <div class="create-account d-flex flex-column align-items-center gap-3">
-        <div class="mt-4 p-2">
+        <div class="titulo-conta mt-4 p-2">
             <h2>Minha Conta - Editar dados Cadastrais</h2>
         </div>
         <form class="w-100 text-start gap-2 d-flex flex-column p-4">
@@ -78,7 +78,7 @@ const submitForm = async () => {
             <button
                 @click="submitForm"
                 type="button" 
-                class="mt-1 btn btn-primary"
+                class="mt-1 btn "
             >
                 Editar Dados
             </button>
@@ -87,9 +87,28 @@ const submitForm = async () => {
 </template>
 
 <style scoped>
+.titulo-conta{
+    color: #fbe319;
+}
+
+.titulo-conta h2{
+    font-weight: 700;
+}
+
+label{
+    color: white;
+    font-weight: 600;
+}
+
 .create-account {
     max-width: 550px;
     margin-left: auto;
     margin-right: auto;
+}
+button{
+    background-color: #fbe319;
+    color: black;
+    font-weight: 600;
+    margin-bottom: 150px;
 }
 </style>

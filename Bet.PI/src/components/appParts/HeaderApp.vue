@@ -90,7 +90,7 @@ onMounted(() => {
 <style scoped>
 .perfil-button{
     background: white;
-    padding: 2px;
+    padding: 2px 10px;
     border-radius: 10px;
 }
 #app-header{
@@ -140,7 +140,8 @@ onMounted(() => {
 .user-name {
     display: inline-block;
     padding: 0.15rem 0.35rem;
-    color: #FFFFFF;
+    color: #015440;
+    font-weight: 600;
 }
 
 .menu {

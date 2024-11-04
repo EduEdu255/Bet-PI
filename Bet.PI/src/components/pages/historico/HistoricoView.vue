@@ -60,7 +60,7 @@ template{
 
 .area-perfil{
     width: 80%;
-    height: 350px;
+    height: 525px;
     border-radius: 15px;
 }
 
