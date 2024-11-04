@@ -4,10 +4,10 @@ import { timeService } from '../../../services/timeService';
 import { partidaService } from '../../../services/partidaService';
 
 const times = ref([]);
-const timeCasa = ref(null);
-const timeVisitante = ref(null);
-const modalidade = ref(1); // Modalidade fixa com valor 1
-const dataHoraJogo = ref(new Date().toISOString()); // Exemplo de data/hora, ajustável
+const timeCasa = ref("");
+const timeVisitante = ref("");
+const modalidade = ref(1); // Limitei a modalidade por não saber exatamente quais modalidade poderemos usar
+const dataHoraJogo = ref(new Date().toISOString()); // data e hora para a criação do jogo
 
 onMounted(() => {
   timeService.load().then((result) => {
@@ -34,7 +34,7 @@ const adicionarPartida = async () => {
 
 <template>
   <div class="view">
-    <section class="section p-4">
+    <section class="section p-5">
       <form @submit.prevent="adicionarPartida" class="form p-4 gap-4 align-item-start bg-secondary-b">
         <div>
           <label for="timeCasa">Time da casa:</label>
@@ -73,18 +73,23 @@ html, body {
   margin: 0;
   padding: 0;
 }
+
 .view {
   width: 100vw;
   background-color: #282828;
   overflow-y: auto;
 }
+
 .form {
-  height: 70vh;
+  height: 90vh;
   width: 30%;
   display: flex;
   flex-direction: column;
   border-radius: 6px;
+  background-color: #333;
+  padding: 16px;
 }
+
 .section {
   width: 100%;
   height: 100%;
@@ -92,4 +97,27 @@ html, body {
   justify-content: center;
   align-items: center;
 }
+
+@media (max-width: 768px) {
+  .form {
+    width: 80%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .form {
+    width: 90%;
+    height: auto;
+    padding: 12px;
+  }
+
+  .form-select, 
+  .form-control,
+  .btn-primary-b {
+    font-size: 1rem;
+    padding: 8px;
+  }
+}
 </style>
+
