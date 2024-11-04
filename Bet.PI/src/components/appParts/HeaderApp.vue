@@ -58,7 +58,7 @@ onMounted(() => {
         </div>
          <!-- Header User -->
          <div class="header-user" v-if="user?.id">
-            <div class="d-flex align-items-center">
+            <div class="perfil-button d-flex align-items-center">
                 <div class="user-photo">
                     <img src="" />
                 </div>
@@ -79,6 +79,11 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.perfil-button{
+    background: white;
+    padding: 2px;
+    border-radius: 10px;
+}
 #app-header{
     position: sticky;
     top: 0;
