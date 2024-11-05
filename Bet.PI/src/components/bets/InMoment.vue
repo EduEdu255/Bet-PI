@@ -7,8 +7,10 @@ const partidas = ref([]);
 const times = ref([]);
 
 onMounted(() => {
-    partidaService.load().then((result) => {
-        partidas.value = result.data;
+    partidaService.loadGames().then((result) => {
+        console.log("Retornou partidas!");
+        console.log(result);
+        partidas.value = result;
     });
 
     timeService.load().then((result) => {

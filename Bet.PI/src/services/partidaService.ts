@@ -21,4 +21,12 @@ export const partidaService = {
   finalizeGame: async (id) => {
     return await api.put(`${prefix}/finalizar/${id}`);
   },
+
+  getGame: async (id) => {
+    return await api.get(`${prefix}/${id}`);
+  },
+
+  loadGames: async () => {
+    return await api.get(`${prefix}/futuros`);
+  },
 };

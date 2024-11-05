@@ -1,6 +1,9 @@
 <script setup lang='ts'>
 import {onMounted, ref} from 'vue';
 import InMoment from '@/components/bets/InMoment.vue';
+import { partidaService } from '@/services/partidaService';
+import { timeService } from '@/services/timeService';
+import { useRouter } from 'vue-router';
 
 const gameMode = ref(1);
 const premio = ref(0);
@@ -10,6 +13,31 @@ const byPlaca1 = ref(0);
 const byPlaca2 = ref(0);
 const byWinner = ref(0);
 const valorApostado = ref(0);
+
+const partida = ref();
+const times = ref([]);
+let route = useRouter();
+
+
+onMounted(async () => {
+
+    // await route.isReady();
+
+    // alert(route.)
+
+    partidaService.getGame().then((id) => {
+        partida.value = id.data;
+    });
+
+    timeService.load().then((result) => {
+        times.value = result.data;
+    });
+});
+
+const getTimeName = (timeId) => {
+    const time = times.value.find(t => t.id === timeId);
+    return time ? time.name : 'Time não encontrado'; // Retorna 'Time não encontrado' se o time não for encontrado
+};
 
 const select = (ev : any) => {
     gameMode.value = ev.target.value;
@@ -37,7 +65,7 @@ const valorAposta = (valor) => {
 }
 </script>
 
-<template>
+<template v-for='item in partidas' :key="item.id">
     <div class="make-bet d-flex flex-column align-items-center gap-3">
         <div class='make-aposta w-100 text-light'>
             <div class='make-bet-header'>

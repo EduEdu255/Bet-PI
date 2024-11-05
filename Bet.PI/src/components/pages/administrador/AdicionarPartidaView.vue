@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { timeService } from '../../../services/timeService';
-import { partidaService } from '../../../services/partidaService';
+import { timeService } from '@/services/timeService';
+import { partidaService } from '@/services/partidaService';
 
 const times = ref("");
 const timeCasa = ref("");
