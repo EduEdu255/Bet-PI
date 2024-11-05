@@ -3,8 +3,8 @@ import { onMounted, ref } from 'vue';
 import { timeService } from '../../../services/timeService';
 import { partidaService } from '../../../services/partidaService';
 
-const times = ref("http://localhost:8001/api/time");
-const timeCasa = ref("http://localhost:8001/api/time");
+const times = ref("");
+const timeCasa = ref("");
 const timeVisitante = ref("");
 const modalidade = ref(1); // Limitei a modalidade por não saber exatamente quais modalidade poderemos usar
 const dataHoraJogo = ref(new Date().toISOString()); // data e hora para a criação do jogo
