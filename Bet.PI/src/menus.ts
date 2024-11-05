@@ -17,7 +17,7 @@ export const headerMenus  = [
     {
         path: '/admin/adicionar-partida',
         name: 'Cadastrar',
-        role: ['empresa', 'role_user', 'role_admin']
+        role: ['empresa', 'role_admin']
     },
     {
         path: '/historico',
