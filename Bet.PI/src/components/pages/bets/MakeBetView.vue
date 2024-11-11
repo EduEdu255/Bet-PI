@@ -16,14 +16,10 @@ const valorApostado = ref(0);
 
 const partida = ref();
 const times = ref([]);
-let route = useRouter();
-
 
 onMounted(async () => {
 
-    // await route.isReady();
-
-    // alert(route.)
+    let betId = useRoute().params?.id;
 
     partidaService.getGame().then((id) => {
         partida.value = id.data;
