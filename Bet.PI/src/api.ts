@@ -24,6 +24,13 @@ export const api = {
                 body: form
             });
         },
+    patch:
+        async (url : string, form : {}) => {
+            return await api.fetch(url, {
+                method: 'PATCH',
+                body: form
+            });
+        },
     delete: 
         async (url : string) => {
             return await api.fetch(url, {
@@ -47,7 +54,10 @@ export const api = {
                 init.body =  JSON.stringify(args?.body ?? {});
             }
 
-            let data = await ( await fetch(`${api_url}/${url}`, init)).json();
+            let data = await (fetch(`${api_url}/${url}`, init).then((resp) => {
+                console.log(resp.headers.get('X-Server-ID'));
+                return resp.json();
+            }))
             app().update({ carregando: false });
             return data;
         } catch (exc) {

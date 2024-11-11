@@ -8,8 +8,6 @@ const times = ref([]);
 
 onMounted(() => {
     partidaService.loadGames().then((result) => {
-        console.log("Retornou partidas!");
-        console.log(result);
         partidas.value = result;
     });
 
