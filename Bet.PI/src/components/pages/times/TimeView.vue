@@ -7,7 +7,7 @@ const times = ref([]);
 onMounted(() => {
     timeService.load().then((result) => {
         console.log(result)
-        times.value = result.data;
+        times.value = result;
     });
     console.log(times.value)
 })

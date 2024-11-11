@@ -29,7 +29,7 @@ const adicionarPartida = async () => {
     time_casa_id: timeCasa.value,
     time_visitante_id: timeVisitante.value,
     data_hora_jogo: dataHoraJogo.value, 
-    modalidade_id: modalidades.value,
+    modalidade_id: modalidade.value,
   };
 
   const response = await partidaService.create(form);

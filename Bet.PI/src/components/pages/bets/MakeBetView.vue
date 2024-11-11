@@ -8,6 +8,8 @@ import { useRouter } from 'vue-router';
 const gameMode = ref(1);
 const premio = ref(0);
 const multiplicador = ref(0);
+const casa = ref("");
+const visitante = ref("");
 
 const byPlaca1 = ref(0);
 const byPlaca2 = ref(0);
@@ -19,14 +21,15 @@ const times = ref([]);
 
 onMounted(async () => {
 
-    let betId = useRoute().params?.id;
+    let betId = useRouter().currentRoute?.value?.params?.id;
 
-    partidaService.getGame().then((id) => {
-        partida.value = id.data;
-    });
-
-    timeService.load().then((result) => {
-        times.value = result.data;
+    partidaService.getGame(betId).then((id) => {
+        partida.value = id [0] ?? undefined;
+        timeService.load().then((result) => {
+            times.value = result;
+            casa.value = getTimeName(partida.value.time_casa_id);
+            visitante.value = getTimeName(partida.value.time_visitante_id);
+        });
     });
 });
 
@@ -75,7 +78,7 @@ const valorAposta = (valor) => {
                     <!-- Jogo -->
                     <div class='game p-0 text-primary'>
                         <span class='fs-6'>
-                            Jogo: Fortaleza X Ceará
+                            Jogo: {{casa}} X {{visitante}}
                         </span>
                     </div>
                     <!-- Premiação -->
@@ -118,13 +121,13 @@ const valorAposta = (valor) => {
                 <template v-if="gameMode == 1">
                     <div class="input-group game-mode mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Fortaleza</span>
+                            <span class="input-group-text">{{casa}}</span>
                         </div>
                         <input type="text" @change="(e) => byPlaca1 = e.target.value" name="placar-1" class="form-control">
                     </div>
                     <div class="input-group game-mode mb-3">
                         <div class="input-group-prepend">
-                            <span class="input-group-text">Ceará</span>
+                            <span class="input-group-text">{{visitante}}</span>
                         </div>
                         <input type="text" @change="(e) => byPlaca2 = e.target.value" name="placar-2" class="form-control">
                     </div>
@@ -136,8 +139,8 @@ const valorAposta = (valor) => {
                             <label class="input-group-text" for="inputGroupSelect01">Vencedor</label>
                         </div>
                         <select @change='winnerSelect'class="custom-select" id="inputGroupSelect01">
-                            <option value="1">Fortaleza</option>
-                            <option value="2">Ceará</option>
+                            <option value="1">{{casa}}</option>
+                            <option value="2">{{ visitante }}</option>
                         </select>
                     </div>
                 </template>

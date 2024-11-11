@@ -12,7 +12,8 @@ onMounted(() => {
     });
 
     timeService.load().then((result) => {
-        times.value = result.data;
+        times.value = result;
+        console.log(times.value)
     });
 });
 
