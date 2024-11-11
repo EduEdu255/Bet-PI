@@ -61,7 +61,7 @@ watch(hasLogged, (v) => {
                         
                         <div class="cadastro-actions d-flex flex-column gap-2">
                               <button @click="cadastro" type="button" class="btn-primary-b">
-                                    Entrar
+                                    Criar
                               </button>
                         </div>
                         <div class="d-flex flex-column justify-content-between align-items-center gap-2">
