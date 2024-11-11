@@ -10,6 +10,9 @@ export const timeService = {
   getTime: async (id) => {
     return await api.get(`${prefix}/${id}`);
   },
+  getTimeModalidade: async(id) => {
+    return await api.get(`${prefix}/modalidade/${id}`);
+  },
 
   create: async (form) => {
     return await api.post(prefix, form);

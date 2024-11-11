@@ -2,25 +2,34 @@
 import { onMounted, ref } from 'vue';
 import { timeService } from '@/services/timeService';
 import { partidaService } from '@/services/partidaService';
+import { modalidadeService } from '@/services/modalidadeService';
 
 const times = ref("");
 const timeCasa = ref("");
 const timeVisitante = ref("");
-const modalidade = ref(1); // Limitei a modalidade por não saber exatamente quais modalidade poderemos usar
+const modalidade = ref("");
+const modalidades = ref([]);
 const dataHoraJogo = ref(new Date().toISOString()); // data e hora para a criação do jogo
 
 onMounted(() => {
-  timeService.load().then((result) => {
-    times.value = result.data;
-  });
+  modalidadeService.load().then((result) => {
+    modalidades.value = result;
+  })
 });
+
+const atualizaModalidade = async () => {
+  if(!modalidade.value) return;
+  timeService.getTimeModalidade(modalidade.value).then((result) => {
+    times.value = result;
+  })
+}
 
 const adicionarPartida = async () => {
   const form = {
     time_casa_id: timeCasa.value,
     time_visitante_id: timeVisitante.value,
     data_hora_jogo: dataHoraJogo.value, 
-    modalidade_id: modalidade.value,
+    modalidade_id: modalidades.value,
   };
 
   const response = await partidaService.create(form);
@@ -36,6 +45,13 @@ const adicionarPartida = async () => {
   <div class="view">
     <section class="section p-5">
       <form @submit.prevent="adicionarPartida" class="form p-4 gap-4 align-item-start bg-secondary-b">
+        <div>
+          <label for="modalidade">Modalidade:</label>
+          <select id="modalidade" v-model="modalidade" class="form-select form-select-lg mb-3" required @change="atualizaModalidade">
+            <option selected disabled value="">Selecione a modalidade</option>
+            <option v-for="modalidade in modalidades" :key="modalidade.id" :value="modalidade.id">{{ modalidade.name }}</option>
+          </select>
+        </div>
         <div>
           <label for="timeCasa">Time da casa:</label>
           <select id="timeCasa" v-model="timeCasa" class="form-select form-select-lg mb-3" required>
@@ -53,12 +69,6 @@ const adicionarPartida = async () => {
         <div>
           <label for="dataHoraJogo">Data e Hora do Jogo:</label>
           <input type="datetime-local" v-model="dataHoraJogo" id="dataHoraJogo" class="form-control mb-3" required />
-        </div>
-        <div>
-          <label for="modalidade">Modalidade:</label>
-          <select id="modalidade" v-model="modalidade" class="form-select form-select-lg mb-3" disabled>
-            <option :value="1">Modalidade 1</option>
-          </select>
         </div>
         <button type="submit" class="btn-primary-b">Adicionar Partida</button>
       </form>
