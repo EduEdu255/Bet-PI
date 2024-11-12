@@ -21,20 +21,38 @@ const getTimeName = (timeId) => {
     const time = times.value.find(t => t.id === timeId);
     return time ? time.name : 'Time não encontrado'; // Retorna 'Time não encontrado' se o time não for encontrado
 };
+
+const getEscudo = (timeId) => {
+    const time = times.value.find(t => t.id === timeId);
+    return time ? time.escudo : '';
+};
+const getDate = (data) => {
+    const date = new Date(data);
+    return new Intl.DateTimeFormat('pt-BR', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+    }).format(date).replace(',',' às');
+}
 </script>
 
 <template>
     <div class="back-aposta d-flex">
         <img src="@/assets/Bola.svg" alt="Bola" class="bola">
-        <h3>Partidas Baseadas em resultados</h3>
+        <h3>Próximos Jogos</h3>
     </div>
     
     <div class='placar row gap-2 ml-auto mr-auto p-0 rounded'>
         <template v-for='item in partidas' :key="item.id">
             <div class='item col-12 row d-flex align-items-center w-100 p-5'>
                 <!-- Competição -->
-                <div class='col-8 times-partida'>
-                    {{ getTimeName(item.time_casa_id) }} vs {{ getTimeName(item.time_visitante_id) }}
+                <div class='col-6 times-partida'>
+                <img :src="getEscudo(item.time_casa_id)"> {{ getTimeName(item.time_casa_id) }} vs {{ getTimeName(item.time_visitante_id) }} <img :src="getEscudo(item.time_visitante_id)">
+                </div>
+                <div  class='col-4 times-partida'>
+                    {{ getDate(item.data_hora_jogo) }}
                 </div>
                 <!-- Placar -->
                 
@@ -43,7 +61,7 @@ const getTimeName = (timeId) => {
                 </div> -->  <!--Comentei porque de início não se tem um placar-->
                 
                 <!-- Apostar -->
-                <div class='col-4 d-flex ml-auto'>
+                <div class='col-2 d-flex ml-auto'>
                     <RouterLink class='button btn ml-auto' :to="`/games/${item.id}/make-bet`">
                         Apostar
                     </RouterLink>
@@ -62,6 +80,10 @@ const getTimeName = (timeId) => {
     width: 1080px;
     border: 1px solid #e9ecef;
     margin-bottom: 50px;
+}
+
+.times-partida img{
+    width: 60px;
 }
 
 .back-aposta {

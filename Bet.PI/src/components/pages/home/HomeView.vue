@@ -24,7 +24,6 @@ import { RouterLink } from 'vue-router';
         <h1 class="apostas">Apostas Esportivas</h1>
 
         <InMoment />
-        <InMoment />
 
         
     </div>

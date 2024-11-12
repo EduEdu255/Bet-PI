@@ -31,7 +31,6 @@ import { RouterLink } from 'vue-router';
         <h1 class="apostas">Histórico de Apostas</h1>
 
         <InMoment />
-        <InMoment />
 
         
     </div>
