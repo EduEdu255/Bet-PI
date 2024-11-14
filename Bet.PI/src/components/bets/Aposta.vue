@@ -86,7 +86,7 @@ const getTipo = (aposta: Aposta): string => {
   border-radius: 10px;
   justify-content: space-around;
   background-color: #FFFFFF;
-  box-shadow: #ffffff 0px 1px 5px 0px;
+  box-shadow: #ffffff 0 1px 5px 0;
   padding: 20px;
   width: 60%;
   margin-bottom: 5px;
@@ -153,20 +153,10 @@ const getTipo = (aposta: Aposta): string => {
   width: 100%;
 }
 
-.escolhido, .empate {
-  font-size: 1.1em;
-  font-weight: bold;
-  background-color: #015440;
-  padding: 10px 20px;
-  border-radius: 10px;
-  color: white;
-
-}
-
 .placar {
   font-size: 1.2em;
   background-color: #015440;
-  padding: 0px 10px;
+  padding: 0 10px;
   border-radius: 5px;
   color: white;
 }
