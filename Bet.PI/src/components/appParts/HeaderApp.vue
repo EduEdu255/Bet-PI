@@ -153,7 +153,7 @@ onMounted(() => {
 
 .menu .menu-item a {
     font-weight: 600;
-    background-color: none;
+    background-color: transparent;
     color: #fafafa;
     box-shadow: none;
     padding: 0.45rem !important;

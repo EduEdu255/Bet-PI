@@ -3,6 +3,7 @@ import {onMounted, ref} from 'vue';
 import InMoment from '@/components/bets/InMoment.vue';
 import { partidaService } from '@/services/partidaService';
 import { timeService } from '@/services/timeService';
+import { apostaService } from '@/services/apostaService';
 import { useRouter } from 'vue-router';
 
 const gameMode = ref(1);
@@ -33,6 +34,27 @@ onMounted(async () => {
     });
 });
 
+const fazAposta = async () => {
+    let aposta = {
+      valor: valorApostado.value,
+      jogo_id: partida.value.id
+    }
+  if(byWinner.value){
+    aposta['resultado'] = byWinner.value;
+  }
+  else{
+    aposta['placar_casa'] = byPlaca1.value;
+    aposta['placar_visitante']=byPlaca2.value;
+  }
+
+  const result = await apostaService.create(aposta);
+  if(result.id){
+    alert('Aposta bem Sucedida!')
+  } else{
+    alert('Aposta mal sucedida!');
+  }
+}
+
 const getTimeName = (timeId) => {
     const time = times.value.find(t => t.id === timeId);
     return time ? time.name : 'Time não encontrado'; // Retorna 'Time não encontrado' se o time não for encontrado
@@ -42,15 +64,11 @@ const select = (ev : any) => {
     gameMode.value = ev.target.value;
 
     if (gameMode.value == 1) {
-        multiplicador.value = 250;
-    }
-
-    if (gameMode.value == 2) {
         multiplicador.value = 5;
     }
 
-    if (gameMode.value == 3) {
-        multiplicador.value = 15;
+    if (gameMode.value == 2) {
+        multiplicador.value = 1.5;
     }
 }
 
@@ -109,8 +127,7 @@ const valorAposta = (valor) => {
                     </div>
                     <select @change='select'class="custom-select" id="inputGroupSelect01">
                         <option value="1">Por Placar</option>
-                        <option value="2">Por um vencedor</option>
-                        <option value="3">Por empate</option>
+                        <option value="2">Por Resultado</option>
                     </select>
                 </div>
             </div>
@@ -123,7 +140,7 @@ const valorAposta = (valor) => {
                         <div class="input-group-prepend">
                             <span class="input-group-text">{{casa}}</span>
                         </div>
-                        <input type="text" @change="(e) => byPlaca1 = e.target.value" name="placar-1" class="form-control">
+                        <input @input="(e) => form[''] = e.target.value" type="text" @change="(e) => byPlaca1 = e.target.value" name="placar-1" class="form-control">
                     </div>
                     <div class="input-group game-mode mb-3">
                         <div class="input-group-prepend">
@@ -139,8 +156,9 @@ const valorAposta = (valor) => {
                             <label class="input-group-text" for="inputGroupSelect01">Vencedor</label>
                         </div>
                         <select @change='winnerSelect'class="custom-select" id="inputGroupSelect01">
-                            <option value="1">{{casa}}</option>
-                            <option value="2">{{ visitante }}</option>
+                            <option value="C">{{casa}}</option>
+                            <option value="V">{{ visitante }}</option>
+                            <option value="E">Empate</option>
                         </select>
                     </div>
                 </template>
@@ -160,7 +178,7 @@ const valorAposta = (valor) => {
                 </div>
             </div>
 
-            <button type="button" class='btn btn-primary'>
+            <button @click="fazAposta" type="button" class='btn btn-primary'>
                 Finalizar Aposta
             </button>
        </div>
