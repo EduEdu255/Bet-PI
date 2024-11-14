@@ -1,4 +1,5 @@
 import { api } from "@/api.ts";
+import {Time} from "../Interfaces/Time.Interface";
 
 const prefix = "time";
 
@@ -23,4 +24,12 @@ export const timeService = {
   remove: async (id) => {
     return await api.delete(`${prefix}/${id}`);
   },
+  mapTime: (result):Time => {
+    return {
+      id: result.id,
+      name: result.name,
+      modalidade: {id: result.modalidades.id, name: result.modalidades.name},
+      escudo: result.escudo,
+    }
+  }
 };
