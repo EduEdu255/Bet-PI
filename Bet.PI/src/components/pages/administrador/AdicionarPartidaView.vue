@@ -3,6 +3,7 @@ import { onMounted, ref } from 'vue';
 import { timeService } from '@/services/timeService';
 import { partidaService } from '@/services/partidaService';
 import { modalidadeService } from '@/services/modalidadeService';
+import router from "@/router";
 
 const times = ref("");
 const timeCasa = ref("");
@@ -33,8 +34,9 @@ const adicionarPartida = async () => {
   };
 
   const response = await partidaService.create(form);
-  if (response?.message === 'inserido') {
+  if (response?.id) {
     console.log("Partida adicionada com sucesso!", response);
+    router.push("/home");
   } else {
     console.error("Erro ao adicionar a partida:", response);
   }

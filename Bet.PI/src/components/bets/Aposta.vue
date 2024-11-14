@@ -34,51 +34,47 @@ const moeda = (valor) => {
   return new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor)
 }
 
-const getTipo = (aposta: Aposta):string => {
-  if(aposta.resultado){
-    switch (aposta.resultado){
+const getTipo = (aposta: Aposta): string => {
+  if (aposta.resultado) {
+    switch (aposta.resultado) {
       case 'E':
-        return 'Empate'
-        break;
+        return 'Empate';
       case 'V':
-        return 'Time Visitante Vence'
-        break;
+        return 'Time Visitante Vence';
       case 'C':
-        return 'Time da Casa Vence'
-        break;
+        return 'Time da Casa Vence';
     }
   }
-  return 'Placar Exato';
+  return `Placar Exato: ${aposta.jogo.timeCasa.name} ${aposta.placarCasa} x ${aposta.placarVisitante} ${aposta.jogo.timeVisitante.name}`;
 }
 
 </script>
 
 <template>
   <div class="card-aposta">
-    <div class="tipo">{{getTipo(aposta)}}</div>
-    <div class="dados cabecalho">
-      <div>Aposta</div>
-      <div>Valor Apostado</div>
-      <div>Retorno</div>
-    </div>
-    <div class="dados">
+    <div class="jogo">
+      <div class="title-jogo">Jogo apostado</div>
       <div class="times">
-        <div :class="getTimeClass(aposta,'C')">{{ aposta.jogo.timeCasa.name }}</div>
+        <div>{{ aposta.jogo.timeCasa.name }}</div>
         <div class="escudo">
-          <img :src="aposta.jogo.timeCasa.escudo">
+          <img :src="aposta.jogo.timeCasa.escudo" alt="Escudo time da Casa">
         </div>
-        <div class="placar">{{ aposta.placarCasa }}</div>
+        <div class="placar">{{ aposta.jogo.placarCasa }}</div>
         <div>X</div>
-        <div class="placar">{{ aposta.placarVisitante }}</div>
+        <div class="placar">{{ aposta.jogo.placarVisitante }}</div>
         <div class="escudo">
-          <img :src="aposta.jogo.timeVisitante.escudo">
+          <img :src="aposta.jogo.timeVisitante.escudo" alt="Escudo time Visitante">
         </div>
         <div :class="getTimeClass(aposta,'V')">{{ aposta.jogo.timeVisitante.name }}</div>
       </div>
-      <div>
-        {{ moeda(aposta.valor) }}
+    </div>
+    <div class="aposta">
+      <div class="title-aposta">Dados da Aposta</div>
+      <div class="tipo">{{ getTipo(aposta) }}</div>
+      <div class="dados">
+        <div>Valor Apostado: {{ moeda(aposta.valor) }}</div>
+        <div class="valor">Prêmio: {{ getResultado(aposta) }}</div>
       </div>
-      <div class="valor">{{ getResultado(aposta) }}</div>
     </div>
   </div>
 </template>
@@ -86,33 +82,47 @@ const getTipo = (aposta: Aposta):string => {
 <style scoped>
 .card-aposta {
   display: flex;
-  flex-direction: column;
   gap: 20px;
   border-radius: 10px;
+  justify-content: space-around;
   background-color: #FFFFFF;
   box-shadow: #ffffff 0px 1px 5px 0px;
   padding: 20px;
   width: 60%;
   margin-bottom: 5px;
 }
-.tipo{
+
+.tipo {
   font-size: 1.3em;
   color: black;
   font-weight: bold;
 }
-.dados{
-  display: grid;
-  justify-content: space-around;
-  align-items: center;
-  grid-template-columns: 4fr 1fr 1fr;
-  gap: 20px;
-  color: black
-}
-.cabecalho{
-  background-color: #eeeeee;
-  border-radius: 4px;
-  color: #333333;
+
+.title-jogo, .title-aposta {
+  color: black;
+  font-size: 1.2em;
   font-weight: bold;
+  padding: 5px 10px;
+  background-color: #aaaaaa;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.dados {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  color: black;
+}
+.aposta div{
+  width: 100%;
+}
+
+.jogo {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
 }
 
 .times {
@@ -122,6 +132,12 @@ const getTipo = (aposta: Aposta):string => {
   gap: 20px;
   color: black;
 }
+.aposta{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 60%;
+}
 
 .valor {
   color: #015440;
@@ -130,7 +146,7 @@ const getTipo = (aposta: Aposta):string => {
 }
 
 .escudo {
-  max-width: 50px;
+  width: 50px;
 }
 
 .escudo img {
@@ -153,9 +169,5 @@ const getTipo = (aposta: Aposta):string => {
   padding: 0px 10px;
   border-radius: 5px;
   color: white;
-}
-
-.resultado-aposta {
-  color: black
 }
 </style>
