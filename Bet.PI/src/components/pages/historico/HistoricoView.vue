@@ -1,7 +1,33 @@
 <script setup lang='ts'>
 import InMoment from '@/components/bets/InMoment.vue';
+import { apostaService} from '@/services/apostaService';
+import * as app from "@/stores/app-store";
+
 import promocaoImage from '@/assets/images/imagem_home1.png';
 import { RouterLink } from 'vue-router';
+
+import {onMounted, ref} from "vue";
+import Aposta from "@/components/bets/Aposta.vue";
+import router from "@/router";
+
+const apostas = ref([])
+let user = {}
+
+onMounted(() => {
+  apostaService.minhas().then((result) =>{
+    apostas.value = result.map((aposta)=> apostaService.mapAposta(aposta));
+    console.log(apostas.value);
+  })
+  const retorno = app.app().get().user;
+  user = retorno;
+  console.log(user);
+})
+
+const logout = () => {
+  app.app().set(null);
+  router.push("/login");
+};
+
 </script>
 
 <template >
@@ -14,23 +40,25 @@ import { RouterLink } from 'vue-router';
             </div>
             <div class="area-dados-pessoais bg-standard-b d-flex flex-column justify-content-center align-items-start gap-2 p-5">
                 <div class="dados">
-                    <p>Nome: <span>Cleiton Rasta</span></p>
+                    <p>Nome: <span>{{user.nome}}</span></p>
                 </div>
                 <div class="dados">
-                    <p>Email: <span>cleitonrasta@gmail.com</span></p>
+                    <p>Email: <span>{{user.email}}</span></p>
 
                 </div>
-                <div class="dados">
-                    <p>CPF: <span>123.456.789.12</span></p>
-                </div>
+<!--                <div class="dados">-->
+<!--                    <p>CPF: <span>123.456.789.12</span></p>-->
+<!--                </div>-->
 
-                <button class="btn-tertiary-b">Sair da conta</button>
+                <button class="btn-tertiary-b" @click="logout">Sair da conta</button>
             </div>
         </main>
 
         <h1 class="apostas">Histórico de Apostas</h1>
-
-        <InMoment />
+     <Aposta v-for="aposta in apostas"
+             :key="aposta.id"
+             :aposta="aposta"
+     />
 
         
     </div>
