@@ -9,11 +9,11 @@ import { RouterLink } from 'vue-router';
     <div class="mt-4 hall d-flex flex-column align-items-center gap-3 bg-primary-b">
         <main class="d-flex p-xxl-5">
             <div class="text-start  w-50"> 
-                <h2 class="text-foco">Oferta para iniciantes</h2>
-                <h2 class="rubik-title display-5">Você receberá 50% do valor do seu depósito qualificativo em Créditos de Aposta (até R$500)</h2>
+                <h2 class="text-foco">Conheça a Bet.Pi</h2>
+                <h2 class="rubik-title display-5">Saiba mais sobre a melhor Bet do mundo!</h2>
                 
-                <RouterLink class='button btn   ml-auto' :to="`/historico`">
-                    Ver meu histórico
+                <RouterLink class='button btn   ml-auto' :to="`/sobrenos`">
+                    Quero saber mais
                 </RouterLink>
             </div>
             <div class="imagem-home w-50 h-50">
