@@ -20,6 +20,11 @@ export const headerMenus  = [
         role: ['empresa', 'role_admin']
     },
     {
+        path: '/admin/realizar-partida',
+        name: 'Realizar Partida',
+        role: ['empresa', 'role_admin']
+    },
+    {
         path: '/historico',
         name: 'Historico',
         role: ['empresa', 'role_user', 'role_admin']

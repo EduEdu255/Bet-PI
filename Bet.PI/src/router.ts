@@ -12,12 +12,14 @@ import CreateAccount from './components/pages/account/CreateAccount.vue'
 import MyAccount from './components/pages/account/MyAccount.vue'
 import BetResultView from './components/pages/bets/BetResultView.vue'
 import TimeView from './components/pages/times/TimeView.vue'
+import RealizarPartidaView from './components/pages/administrador/RealizarPartidaView.vue'
 
 const routes = [
   { path: '/login', component: LoginView },
   { path: '/home', component: HomeView},
   { path: '/sobrenos', component: SobreNosView},
   { path: '/admin/adicionar-partida', component: AdministradoPartidaView},
+  { path: '/admin/realizar-partida', component: RealizarPartidaView},
   { path: '/cadastrar', component: CadastroView},
   { path: '/historico', component: HistoricoView},
   { path: '/trocar-senha', component: TrocarSenhaView },
