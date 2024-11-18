@@ -31,7 +31,7 @@ const getResultado = (aposta: Aposta) => {
 }
 
 const moeda = (valor) => {
-  return new Intl.NumberFormat('pt-BR', {style: 'currency', currency: 'BRL'}).format(valor)
+  return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
 }
 
 const getTipo = (aposta: Aposta): string => {
@@ -65,7 +65,7 @@ const getTipo = (aposta: Aposta): string => {
         <div class="escudo">
           <img :src="aposta.jogo.timeVisitante.escudo" alt="Escudo time Visitante">
         </div>
-        <div :class="getTimeClass(aposta,'V')">{{ aposta.jogo.timeVisitante.name }}</div>
+        <div :class="getTimeClass(aposta, 'V')">{{ aposta.jogo.timeVisitante.name }}</div>
       </div>
     </div>
     <div class="aposta">
@@ -85,27 +85,30 @@ const getTipo = (aposta: Aposta): string => {
   gap: 20px;
   border-radius: 10px;
   justify-content: space-around;
-  background-color: #FFFFFF;
-  box-shadow: #ffffff 0 1px 5px 0;
+  background-color: #383434;
+  box-shadow: #fae21b 0 1px 2px 0;
   padding: 20px;
   width: 60%;
   margin-bottom: 5px;
+  color: white;
 }
 
 .tipo {
   font-size: 1.3em;
-  color: black;
+
   font-weight: bold;
 }
 
-.title-jogo, .title-aposta {
-  color: black;
+.title-jogo,
+.title-aposta {
+
   font-size: 1.2em;
   font-weight: bold;
   padding: 5px 10px;
-  background-color: #aaaaaa;
+  background-color: #fae21b;
   width: 100%;
   border-radius: 5px;
+  color: #0b0a04;
 }
 
 .dados {
@@ -113,9 +116,10 @@ const getTipo = (aposta: Aposta): string => {
   justify-content: space-between;
   align-items: center;
   gap: 20px;
-  color: black;
+
 }
-.aposta div{
+
+.aposta div {
   width: 100%;
 }
 
@@ -130,9 +134,12 @@ const getTipo = (aposta: Aposta): string => {
   align-items: center;
   justify-content: space-around;
   gap: 20px;
-  color: black;
+  margin-top: 25px;
+  font-weight: 600;
+
 }
-.aposta{
+
+.aposta {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -140,7 +147,7 @@ const getTipo = (aposta: Aposta): string => {
 }
 
 .valor {
-  color: #015440;
+  color: #fae21b;
   font-size: 1.4em;
   font-weight: bold;
 }
