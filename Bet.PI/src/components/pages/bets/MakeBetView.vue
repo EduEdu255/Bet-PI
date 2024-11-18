@@ -26,12 +26,9 @@ onMounted(async () => {
 
     partidaService.getGame(betId).then((id) => {
         partida.value = id [0] ?? undefined;
-        timeService.load().then((result) => {
-            times.value = result;
-            casa.value = getTimeName(partida.value.time_casa_id);
-            visitante.value = getTimeName(partida.value.time_visitante_id);
+        casa.value = partida.value.time_casa.name
+        visitante.value = partida.value.time_visitante.name
         });
-    });
 });
 
 const fazAposta = async () => {
@@ -54,11 +51,6 @@ const fazAposta = async () => {
     alert('Aposta mal sucedida!');
   }
 }
-
-const getTimeName = (timeId) => {
-    const time = times.value.find(t => t.id === timeId);
-    return time ? time.name : 'Time não encontrado'; // Retorna 'Time não encontrado' se o time não for encontrado
-};
 
 const select = (ev : any) => {
     gameMode.value = ev.target.value;
