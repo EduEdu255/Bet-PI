@@ -4,6 +4,9 @@ import MainApp from '@/components/appParts/MainApp.vue';
 import FooterApp from '@/components/appParts/FooterApp.vue';
 import { ref, watch } from "vue";
 import * as app from "@/stores/app-store";
+// src/main.ts ou App.vue (script setup)
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+
 
 const carregando = ref(false);
 const snack = ref(false);
