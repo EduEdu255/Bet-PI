@@ -18,7 +18,7 @@ const login = async () => {
       app.app().update({
             'token' : data.access_token,
       });
-
+      app.app().openSnackBar('Login bem sucedido.');
       let user = await me();
 
       if (user?.id) {

@@ -5,6 +5,7 @@ import { partidaService } from '@/services/partidaService';
 import { timeService } from '@/services/timeService';
 import { apostaService } from '@/services/apostaService';
 import { useRouter } from 'vue-router';
+import * as app from '@/stores/app-store';
 
 const gameMode = ref(1);
 const premio = ref(0);
@@ -46,9 +47,9 @@ const fazAposta = async () => {
 
   const result = await apostaService.create(aposta);
   if(result.id){
-    alert('Aposta bem Sucedida!')
-  } else{
-    alert('Aposta mal sucedida!');
+      app.app().openSnackBar('Aposta bem sucedida.');
+    } else{
+      app.app().openSnackBar('Aposta mal sucedida. ' + (result.message ?? ''));
   }
 }
 
@@ -132,13 +133,13 @@ const valorAposta = (valor) => {
                         <div class="input-group-prepend">
                             <span class="input-group-text">{{casa}}</span>
                         </div>
-                        <input @input="(e) => form[''] = e.target.value" type="text" @change="(e) => byPlaca1 = e.target.value" name="placar-1" class="form-control">
+                        <input @input="(e) => form[''] = e.target.value" type="number" min="0" max="5" @change="(e) => byPlaca1 = e.target.value" name="placar-1" class="form-control">
                     </div>
                     <div class="input-group game-mode mb-3">
                         <div class="input-group-prepend">
                             <span class="input-group-text">{{visitante}}</span>
                         </div>
-                        <input type="text" @change="(e) => byPlaca2 = e.target.value" name="placar-2" class="form-control">
+                        <input type="number" @change="(e) => byPlaca2 = e.target.value" min="0" max="5" name="placar-2" class="form-control">
                     </div>
                 </template>
                 <!-- Por vencedor -->

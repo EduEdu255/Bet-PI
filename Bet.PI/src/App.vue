@@ -6,11 +6,15 @@ import { ref, watch } from "vue";
 import * as app from "@/stores/app-store";
 
 const carregando = ref(false);
+const snack = ref(false);
+const snackText = ref("");
 
 watch(
   () => app.app().get(),
   (newAppData) => {
     carregando.value = newAppData?.carregando ?? false;
+    snack.value = newAppData?.snack ?? false;
+    snackText.value = newAppData?.snackText ?? '';
   },
   { deep: true }
 );
@@ -28,6 +32,9 @@ watch(
         <img src="./assets/images/wallet.gif" />
       </div>
     </div>
+    <div class="snackbar" v-if="snack">
+      <div>{{ snackText }}</div>
+    </div>
     <MainApp />
     <FooterApp v-if="base !== 'login'" />
   </div>
@@ -35,7 +42,8 @@ watch(
 
 <style scoped>
 #app {
-  position: relative; /* Alterado de absolute para relative */
+  position: relative;
+  /* Alterado de absolute para relative */
   top: 0;
   left: 0;
   width: 100%;
@@ -47,7 +55,8 @@ watch(
   color: #2c3e50;
   display: flex;
   flex-direction: column;
-  overflow: hidden; /* Adicionado para evitar overflow */
+  overflow: hidden;
+  /* Adicionado para evitar overflow */
 }
 
 #app span,
@@ -73,4 +82,19 @@ watch(
   max-height: 300px;
 }
 
+.snackbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  background-color: #fbe319;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 600;
+  position: fixed;
+  height: 6vh;
+  left: 25%;
+  top: 90%;
+  border-radius: 10px;
+}
 </style>
