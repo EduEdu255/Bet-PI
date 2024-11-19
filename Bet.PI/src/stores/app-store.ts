@@ -28,6 +28,19 @@ export const app = () => {
             appState.value = current;
             sessionStorage.setItem("app", JSON.stringify(current));
             return appState.value;
+        },
+        openSnackBar: (text: string) => {
+           appState.value = JSON.parse(sessionStorage.getItem('app') || '{}') || {};
+           appState.value.snack = true;
+           appState.value.snackText = text;
+           console.log("Abri o snack!")
+
+           setTimeout(() => {
+                appState.value.snack = false;
+                appState.value.snackText = '';
+                sessionStorage.setItem("app", JSON.stringify(appState.value));
+           }, 3000);
+           sessionStorage.setItem("app", JSON.stringify(appState.value));
         }
     }
 }
