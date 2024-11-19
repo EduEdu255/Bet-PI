@@ -1,15 +1,20 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { timeService } from '@/services/timeService';
-import { partidaService } from '@/services/partidaService';
-import { modalidadeService } from '@/services/modalidadeService';
-import router from "@/router";
+import { timeService } from '../../../services/timeService';
+import { partidaService } from '../../../services/partidaService';
+import { modalidadeService } from '../../../services/modalidadeService';
+import router from "../../../router";
 
-const times = ref("");
+const times = ref<any[]>([]);
 const timeCasa = ref("");
 const timeVisitante = ref("");
 const modalidade = ref("");
-const modalidades = ref([]);
+interface Modalidade {
+  id: number;
+  name: string;
+}
+
+const modalidades = ref<Modalidade[]>([]);
 const dataHoraJogo = ref(new Date().toISOString()); // data e hora para a criação do jogo
 
 onMounted(() => {
