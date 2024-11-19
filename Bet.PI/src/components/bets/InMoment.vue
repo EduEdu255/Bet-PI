@@ -1,12 +1,17 @@
 <script setup lang='ts'>
 import {onMounted, ref} from 'vue';
+import {useRouter} from 'vue-router';
 import {partidaService} from '@/services/partidaService';
 import {timeService} from '@/services/timeService';
 import * as app from "@/stores/app-store";
+import Toast, {useToast} from "vue-toastification";
+import "vue-toastification/dist/index.css";
 
 const partidas = ref([]);
 const times = ref([]);
 const user = ref(undefined);
+const toast = useToast();
+const router = useRouter();
 
 onMounted(() => {
   user.value = app.app().get().user
@@ -29,6 +34,12 @@ const podeApostar = (): boolean => {
     return true;
   }
   return false;
+}
+
+const handleApostarClick = (itemId) => {
+  router.push(`/games/${itemId}/make-bet`).then(() => {
+    toast.success("Aposta realizada com sucesso!");
+  });
 }
 
 // const getTimeName = (timeId) => {
@@ -65,16 +76,16 @@ const getDate = (data) => {
         <div class='col-6 times-partida'>
           {{ item.timeCasa.name }} <img :src="item.timeCasa.escudo"> X <img :src="item.timeVisitante.escudo">
           {{ item.timeVisitante.name }}
-        </div>
+        </div> 
         <div class='col-4 times-partida'>
           {{ getDate(item.dataHoraJogo) }}
         </div>
 
         <!-- Apostar -->
         <div class='col-2 d-flex ml-auto' v-if="podeApostar()">
-          <RouterLink class='button btn ml-auto' :to="`/games/${item.id}/make-bet`">
+          <button class='button btn ml-auto' @click="handleApostarClick(item.id)">
             Apostar
-          </RouterLink>
+          </button>
         </div>
       </div>
     </template>
