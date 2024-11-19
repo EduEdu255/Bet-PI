@@ -78,9 +78,9 @@ onMounted(() => {
                             </RouterLink>
                         </li>
                     </template>
-                    <li class="nav-item" v-if="!user?.id">
-                        <RouterLink to="/login" class="nav-link login">Login</RouterLink>
-                    </li>
+                    <template v-else>
+                        <RouterLink to="/login" class="btn btn-success login-btn ms-lg-auto">Login</RouterLink>
+                    </template>
                 </ul>
 
                 <!-- User Profile -->
