@@ -9,7 +9,7 @@ import * as app from '@/stores/app-store';
 
 const gameMode = ref(1);
 const premio = ref(0);
-const multiplicador = ref(0);
+const multiplicador = ref(5);
 const casa = ref("");
 const visitante = ref("");
 
