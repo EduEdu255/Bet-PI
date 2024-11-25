@@ -10,7 +10,7 @@ import { RouterLink } from 'vue-router';
         <main class="d-flex p-xxl-5">
             <div class="text-start  w-50"> 
                 <h2 class="text-foco">Conheça a Bet.Pi</h2>
-                <h2 class="rubik-title display-5">Saiba mais sobre a melhor Bet do mundo!</h2>
+                <h2 class="rubik-title display-5 fs-md-1">Saiba mais sobre a melhor Bet do mundo!</h2>
                 
                 <RouterLink class='button btn   ml-auto' :to="`/sobrenos`">
                     Quero saber mais

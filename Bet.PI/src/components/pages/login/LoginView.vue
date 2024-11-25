@@ -14,7 +14,11 @@ onMounted(() => {
 
 const login = async () => {
       let data = await accountLogin(form.value);
+      if(!data.access_token){
+            app.app().openSnackBar('Login mal sucedido. Verifique suas credenciais.');
+            return;
 
+      }
       app.app().update({
             'token' : data.access_token,
       });

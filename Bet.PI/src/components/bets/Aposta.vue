@@ -153,7 +153,7 @@ const getTipo = (aposta: Aposta): string => {
 }
 
 .escudo {
-  width: 50px;
+  min-width: 50px;
 }
 
 .escudo img {
