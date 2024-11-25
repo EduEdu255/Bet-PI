@@ -37,9 +37,7 @@ const podeApostar = (): boolean => {
 }
 
 const handleApostarClick = (itemId) => {
-  router.push(`/games/${itemId}/make-bet`).then(() => {
-    toast.success("Aposta realizada com sucesso!");
-  });
+  router.push(`/games/${itemId}/make-bet`).then(() => {});
 }
 
 // const getTimeName = (timeId) => {
