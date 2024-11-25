@@ -16,8 +16,8 @@ export const fetchId = async (id) => {
     return await api.get('pessoas/' + id);
 }
 
-export const create = async (form) => {
-    return await api.post('pessoas/', form);
+export const cadastrar = async (form) => {
+    return await api.post('auth/register', form);
 }
 
 export const update = async (id, form) => {
