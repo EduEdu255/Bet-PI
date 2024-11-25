@@ -27,6 +27,6 @@ export const headerMenus  = [
     {
         path: '/historico',
         name: 'Historico',
-        role: ['empresa', 'role_user', 'role_admin']
+        role: ['empresa', 'role_user']
     }
 ];
