@@ -40,12 +40,12 @@ const getTipo = (aposta: Aposta): string => {
       case 'E':
         return 'Empate';
       case 'V':
-        return 'Time Visitante Vence';
+        return `${aposta.jogo.timeVisitante.name} Vence`;
       case 'C':
-        return 'Time da Casa Vence';
+        return `${aposta.jogo.timeCasa.name} Vence`;
     }
   }
-  return `Placar Exato: ${aposta.jogo.timeCasa.name} ${aposta.placarCasa} x ${aposta.placarVisitante} ${aposta.jogo.timeVisitante.name}`;
+  return `${aposta.jogo.timeCasa.name} ${aposta.placarCasa} x ${aposta.placarVisitante} ${aposta.jogo.timeVisitante.name}`;
 }
 
 </script>
@@ -59,9 +59,9 @@ const getTipo = (aposta: Aposta): string => {
         <div class="escudo">
           <img :src="aposta.jogo.timeCasa.escudo" alt="Escudo time da Casa">
         </div>
-        <div class="placar">{{ aposta.jogo.placarCasa }}</div>
+        <div class="placar-aposta">{{ aposta.jogo.placarCasa }}</div>
         <div>X</div>
-        <div class="placar">{{ aposta.jogo.placarVisitante }}</div>
+        <div class="placar-aposta">{{ aposta.jogo.placarVisitante }}</div>
         <div class="escudo">
           <img :src="aposta.jogo.timeVisitante.escudo" alt="Escudo time Visitante">
         </div>
@@ -71,7 +71,7 @@ const getTipo = (aposta: Aposta): string => {
     <div class="aposta">
       <div class="title-aposta">Dados da Aposta</div>
       <div class="tipo">{{ getTipo(aposta) }}</div>
-      <div class="dados">
+      <div class="dados-aposta">
         <div>Valor Apostado: {{ moeda(aposta.valor) }}</div>
         <div class="valor">Prêmio: {{ getResultado(aposta) }}</div>
       </div>
@@ -111,7 +111,7 @@ const getTipo = (aposta: Aposta): string => {
   color: #0b0a04;
 }
 
-.dados {
+.dados-aposta {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -133,9 +133,10 @@ const getTipo = (aposta: Aposta): string => {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 20px;
+  gap: 2%;
   margin-top: 25px;
   font-weight: 600;
+  overflow: hidden;
 
 }
 
@@ -160,11 +161,32 @@ const getTipo = (aposta: Aposta): string => {
   width: 100%;
 }
 
-.placar {
+.placar-aposta {
   font-size: 1.2em;
   background-color: #015440;
   padding: 0 10px;
   border-radius: 5px;
   color: white;
+}
+
+@media (max-width:728px) {
+  .card-aposta, .times, .dados-aposta{
+    flex-direction: column;
+  }
+  .times{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .jogo, .aposta{
+    width: 90%;
+    margin: 0 auto
+  }
+  .escudo img{
+    width: 50%
+  }
+  .aposta{
+    flex-direction: column;
+  }
 }
 </style>

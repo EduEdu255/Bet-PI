@@ -15,6 +15,7 @@ let user = {}
 
 onMounted(() => {
   apostaService.minhas().then((result) =>{
+    console.log(result);
     apostas.value = result.map((aposta)=> apostaService.mapAposta(aposta));
     console.log(apostas.value);
   })
@@ -38,7 +39,7 @@ const logout = () => {
                     <img src="../../../assets/images/imagem-perfil.png" alt="">
                 </div>
             </div>
-            <div class="area-dados-pessoais bg-standard-b d-flex flex-column justify-content-center align-items-start gap-2 p-5">
+            <div class="area-dados-pessoais bg-standard-b d-flex flex-column justify-content-center align-items-center gap-2 p-5">
                 <div class="dados">
                     <p>Nome: <span>{{user.nome}}</span></p>
                 </div>

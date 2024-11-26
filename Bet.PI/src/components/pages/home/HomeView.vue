@@ -58,6 +58,9 @@ template{
 .imagem-home{
     margin-left: 50px;
 }
+.imagem-home img{
+  max-width: 50%;
+}
 
 .apostas{
     font-weight: 600;
@@ -91,6 +94,14 @@ main{
     background-color: #222222;
     margin-top: -30px;
     margin-bottom: 30px;
+}
+@media(max-width: 728px){
+  .text-start{
+    padding: 20px;
+  }
+  .rubik-title{
+    font-size: 2em;
+  }
 }
 </style>
 

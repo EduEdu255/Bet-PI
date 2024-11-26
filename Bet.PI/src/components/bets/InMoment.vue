@@ -69,7 +69,7 @@ const getDate = (data) => {
 
   <div class='placar row gap-2 ml-auto mr-auto p-0 rounded'>
     <template v-for='item in partidas' :key="item.id">
-      <div class='item col-12 row d-flex align-items-center w-100 p-5'>
+      <div class='item col-12 row d-flex align-items-center justify-content-between w-100 p-5'>
         <!-- Competição -->
         <div class='col-6 times-partida'>
           {{ item.timeCasa.name }} <img :src="item.timeCasa.escudo"> X <img :src="item.timeVisitante.escudo">
@@ -80,8 +80,8 @@ const getDate = (data) => {
         </div>
 
         <!-- Apostar -->
-        <div class='col-2 d-flex ml-auto' v-if="podeApostar()">
-          <button class='button btn ml-auto' @click="handleApostarClick(item.id)">
+        <div class='col-2 d-flex' v-if="podeApostar()">
+          <button class='button btn' @click="handleApostarClick(item.id)">
             Apostar
           </button>
         </div>
@@ -97,7 +97,7 @@ const getDate = (data) => {
 }
 
 .placar {
-  width: 1080px;
+  max-width: 1080px;
   border: 1px solid #e9ecef;
   margin-bottom: 50px;
 }
@@ -109,7 +109,7 @@ const getDate = (data) => {
 .back-aposta {
   text-align: start;
   height: 100px;
-  width: 1080px;
+  max-width: 1080px;
   border-radius: 15px;
   margin-bottom: -30px;
   align-items: center;
@@ -145,6 +145,20 @@ const getDate = (data) => {
 .button:hover {
   border: 1px solid white;
   color: #fff;
+}
+@media (max-width:728px) {
+  .placar .item{
+    flex-direction: column;
+    gap: 10px;
+  }
+  .times-partida{
+    width: 100%;
+    justify-content: center;
+  }
+  .item div.col-2{
+    width: 33%;
+
+  }
 }
 
 </style>

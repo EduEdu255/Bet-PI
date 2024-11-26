@@ -37,7 +37,7 @@ const fazAposta = async () => {
       valor: valorApostado.value,
       jogo_id: partida.value.id
     }
-  if(byWinner.value){
+  if(gameMode.value == 2){
     aposta['resultado'] = byWinner.value;
   }
   else{
@@ -148,7 +148,7 @@ const valorAposta = (valor) => {
                         <div class="input-group-prepend">
                             <label class="input-group-text" for="inputGroupSelect01">Vencedor</label>
                         </div>
-                        <select @change='winnerSelect'class="custom-select" id="inputGroupSelect01">
+                        <select @change="winnerSelect" class="custom-select" id="inputGroupSelect01">
                             <option value="C">{{casa}}</option>
                             <option value="V">{{ visitante }}</option>
                             <option value="E">Empate</option>
