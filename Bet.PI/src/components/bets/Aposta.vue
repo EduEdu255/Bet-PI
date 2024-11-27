@@ -53,7 +53,7 @@ const getTipo = (aposta: Aposta): string => {
 <template>
   <div class="card-aposta">
     <div class="jogo">
-      <div class="title-jogo">Jogo apostado</div>
+      <div class="title-jogo">Resultado do jogo</div>
       <div class="times">
         <div>{{ aposta.jogo.timeCasa.name }}</div>
         <div class="escudo">
@@ -69,11 +69,11 @@ const getTipo = (aposta: Aposta): string => {
       </div>
     </div>
     <div class="aposta">
-      <div class="title-aposta">Dados da Aposta</div>
+      <div class="title-aposta">Sua aposta foi</div>
       <div class="tipo">{{ getTipo(aposta) }}</div>
       <div class="dados-aposta">
-        <div>Valor Apostado: {{ moeda(aposta.valor) }}</div>
-        <div class="valor">Prêmio: {{ getResultado(aposta) }}</div>
+        <div>Você apostou: {{ moeda(aposta.valor) }}</div>
+        <div class="valor">Você recebe: {{ getResultado(aposta) }}</div>
       </div>
     </div>
   </div>

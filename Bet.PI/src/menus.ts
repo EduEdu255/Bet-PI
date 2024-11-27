@@ -1,12 +1,12 @@
 export const headerMenus  = [
     {
         path: '/home',
-        name: 'Todos os Jogos',
+        name: 'Próximos jogos',
         role: ['role_admin', 'empresa', 'role_user']
     },
     {
         path: '/my-account',
-        name: 'Minha Conta',
+        name: 'Editar cadastro',
         role: ['empresa', 'role_user', 'role_admin']
     },
     {
@@ -16,17 +16,17 @@ export const headerMenus  = [
     },
     {
         path: '/admin/adicionar-partida',
-        name: 'Cadastrar',
+        name: 'Adicionar partida',
         role: ['empresa', 'role_admin']
     },
     {
         path: '/admin/realizar-partida',
-        name: 'Realizar Partida',
+        name: 'Finalizar Partida',
         role: ['empresa', 'role_admin']
     },
     {
         path: '/historico',
-        name: 'Historico',
+        name: 'Minhas apostas',
         role: ['empresa', 'role_user']
     }
 ];
