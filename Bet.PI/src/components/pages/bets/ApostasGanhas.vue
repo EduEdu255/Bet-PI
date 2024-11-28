@@ -7,8 +7,14 @@ import Aposta from "@/components/bets/Aposta.vue";
 import router from "@/router";
 
 const apostas = ref([])
+const user = ref(undefined);
+const admin = ref(false)
 
 onMounted(() => {
+  user.value = app.app().get().user;
+  if(user.value.roles.includes('role_admin')){
+    admin.value = true;
+  }
   apostaService.vencedoras().then((result) =>{
     apostas.value = result.map((aposta)=> apostaService.mapAposta(aposta));
   })
@@ -22,6 +28,7 @@ onMounted(() => {
     <Aposta v-for="aposta in apostas"
             :key="aposta.id"
             :aposta="aposta"
+            :admin="admin"
     />
   </div>
 </template>

@@ -15,13 +15,10 @@ let user = {}
 
 onMounted(() => {
   apostaService.minhas().then((result) =>{
-    console.log(result);
     apostas.value = result.map((aposta)=> apostaService.mapAposta(aposta));
-    console.log(apostas.value);
   })
   const retorno = app.app().get().user;
   user = retorno;
-  console.log(user);
 })
 
 const logout = () => {
@@ -59,6 +56,7 @@ const logout = () => {
      <Aposta v-for="aposta in apostas"
              :key="aposta.id"
              :aposta="aposta"
+             :admin="user.roles.includes('role_admin')"
      />
 
         

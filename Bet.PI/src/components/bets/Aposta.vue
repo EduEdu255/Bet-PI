@@ -3,7 +3,8 @@ import type * as Aposta from "@/interfaces/Aposta.Interface";
 import {apostaService} from "@/services/apostaService";
 
 defineProps<{
-  aposta: Aposta.default
+  aposta: Aposta.default,
+  admin: boolean
 }>()
 
 const getTimeClass = (aposta: Aposta, time: string) => {
@@ -87,8 +88,8 @@ const getTipo = (aposta: Aposta): string => {
         <div>Você apostou: {{ moeda(aposta.valor) }}</div>
         <div class="valor">Você recebe: {{ getResultado(aposta) }}</div>
       </div>
-      <div class="pagamento">{{aposta.paga ? 'Paga' : 'Pendente de Pagamento'}}</div>
-      <div v-if="!aposta.paga">
+      <div class="pagamento" v-if="aposta.venceu">{{aposta.paga ? 'Paga' : 'Pendente de Pagamento'}}</div>
+      <div v-if="!aposta.paga && aposta.venceu && admin">
         <button class="button btn" @click="pagar(aposta)">Registrar Pagamento</button>
       </div>
     </div>
@@ -105,7 +106,7 @@ const getTipo = (aposta: Aposta): string => {
   background-color: #383434;
   box-shadow: #fae21b 0 1px 2px 0;
   padding: 20px;
-  width: 60%;
+  width: 90%;
   margin-bottom: 5px;
   color: white;
 }
@@ -192,6 +193,7 @@ const getTipo = (aposta: Aposta): string => {
 
 .escudo {
   min-width: 50px;
+  max-width: 100px;
 }
 
 .escudo img {
@@ -224,6 +226,11 @@ const getTipo = (aposta: Aposta): string => {
   }
   .aposta{
     flex-direction: column;
+  }
+}
+@media (max-width: 1024px) and (min-width: 728px){
+  .card-user{
+    font-size: 0.7em;
   }
 }
 </style>
