@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type * as Aposta from "@/interfaces/Aposta.Interface";
+import {apostaService} from "@/services/apostaService";
 
 defineProps<{
   aposta: Aposta.default
@@ -29,6 +30,14 @@ const getResultado = (aposta: Aposta) => {
   return moeda(0)
 
 }
+const pagar = async (aposta: Aposta) => {
+  const pagou = await  apostaService.pagarAposta(aposta.id);
+  if(pagou.id){
+    aposta.paga = true;
+  }
+}
+
+
 
 const moeda = (valor) => {
   return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(valor)
@@ -51,6 +60,9 @@ const getTipo = (aposta: Aposta): string => {
 </script>
 
 <template>
+  <div class="card-user">
+   <div class="user-name">{{ aposta.user.name }} - {{ aposta.user.email }}</div>
+
   <div class="card-aposta">
     <div class="jogo">
       <div class="title-jogo">Resultado do jogo</div>
@@ -75,7 +87,12 @@ const getTipo = (aposta: Aposta): string => {
         <div>Você apostou: {{ moeda(aposta.valor) }}</div>
         <div class="valor">Você recebe: {{ getResultado(aposta) }}</div>
       </div>
+      <div class="pagamento">{{aposta.paga ? 'Paga' : 'Pendente de Pagamento'}}</div>
+      <div v-if="!aposta.paga">
+        <button class="button btn" @click="pagar(aposta)">Registrar Pagamento</button>
+      </div>
     </div>
+  </div>
   </div>
 </template>
 
@@ -91,6 +108,16 @@ const getTipo = (aposta: Aposta): string => {
   width: 60%;
   margin-bottom: 5px;
   color: white;
+}
+.card-user{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+}
+.user-name{
+  font-weight: bold;
+  font-size: 1.5em;
 }
 
 .tipo {
@@ -117,6 +144,16 @@ const getTipo = (aposta: Aposta): string => {
   align-items: center;
   gap: 20px;
 
+}
+
+.button {
+  background-color: #FBE219;
+  font-weight: 600;
+}
+
+.button:hover {
+  border: 1px solid white;
+  color: #fff;
 }
 
 .aposta div {
@@ -147,7 +184,7 @@ const getTipo = (aposta: Aposta): string => {
   width: 60%;
 }
 
-.valor {
+.valor, .pagamento {
   color: #fae21b;
   font-size: 1.4em;
   font-weight: bold;

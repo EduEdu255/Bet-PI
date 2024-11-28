@@ -28,5 +28,10 @@ export const headerMenus  = [
         path: '/historico',
         name: 'Minhas apostas',
         role: ['empresa', 'role_user']
+    },
+    {
+        path: '/apostas/vencedoras',
+        name: 'Vencedoras',
+        role: ['role_admin']
     }
 ];

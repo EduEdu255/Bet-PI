@@ -14,6 +14,7 @@ import MyAccount from './components/pages/account/MyAccount.vue'
 import BetResultView from './components/pages/bets/BetResultView.vue'
 import TimeView from './components/pages/times/TimeView.vue'
 import RealizarPartidaView from './components/pages/administrador/RealizarPartidaView.vue'
+import ApostasGanhas from "./components/pages/bets/ApostasGanhas.vue";
 
 const routes = [
   { path: '/login', component: LoginView },
@@ -31,6 +32,7 @@ const routes = [
     { path: '/games/:userbetid/bet-result', component: BetResultView},
   { path: '/create-account', component: CreateAccount },
   { path: '/my-account', component: MyAccount},
+  {path: '/apostas/vencedoras', component: ApostasGanhas},
   // { path: '/login', component: LoginView},
 ]
 
