@@ -98,6 +98,7 @@ html, body {
   height: 300px;
   overflow: hidden;
   border-radius: 50%;
+  border: 2px solid #fff;
   display: flex;
   justify-content: center;
   align-items: center;
