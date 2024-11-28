@@ -20,6 +20,12 @@ export const apostaService = {
     remove: async (id) => {
         return await api.delete(`${prefix}/${id}`);
     },
+    vencedoras: async() => {
+        return await api.get(`${prefix}/vencedor/true`)
+    },
+    pagarAposta: async(id) => {
+     return await api.patch(`${prefix}/pagar/${id}`)
+    },
     mapAposta: (result):Aposta => {
         return {
             id: result.id,
@@ -30,6 +36,8 @@ export const apostaService = {
             placarCasa: result.placar_casa,
             placarVisitante: result.placar_visitante,
             multiplicador: result.multiplicador,
+            paga: result.paga,
+            user: {id: result.user.id, name: result.user.name, email: result.user.email}
         }
     }
 };
