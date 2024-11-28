@@ -2,6 +2,7 @@ import { createWebHistory, createRouter } from 'vue-router'
 
 import LoginView from './components/pages/login/LoginView.vue'
 import HomeView from './components/pages/home/HomeView.vue'
+import HomeVisit from './components/pages/home/HomeView.vue'
 import SobreNosView from './components/pages/sobrenos/SobreNosView.vue'
 import AdministradoPartidaView from './components/pages/administrador/AdicionarPartidaView.vue'
 import CadastroView from './components/pages/cadastro/CadastroView.vue'
@@ -17,6 +18,7 @@ import RealizarPartidaView from './components/pages/administrador/RealizarPartid
 const routes = [
   { path: '/login', component: LoginView },
   { path: '/home', component: HomeView},
+  { path: '/', component: HomeView},
   { path: '/sobrenos', component: SobreNosView},
   { path: '/admin/adicionar-partida', component: AdministradoPartidaView},
   { path: '/admin/realizar-partida', component: RealizarPartidaView},

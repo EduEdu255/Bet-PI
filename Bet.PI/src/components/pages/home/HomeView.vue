@@ -7,19 +7,20 @@ import { RouterLink } from 'vue-router';
 
 <template >
     <div class="mt-4 hall d-flex flex-column align-items-center gap-3 bg-primary-b">
-        <main class="d-flex p-xxl-5">
-            <div class="text-start  w-50"> 
+        <main class="d-flex flex-column flex-md-row p-xxl-5">
+            <div class="text-start col-lg-6 col-md-12 mb-4 mb-md-0">
                 <h2 class="text-foco">Conheça a Bet.Pi</h2>
                 <h2 class="rubik-title display-5 fs-md-1">Saiba mais sobre a melhor Bet do mundo!</h2>
-                
-                <RouterLink class='button btn   ml-auto' :to="`/sobrenos`">
+
+                <RouterLink class="btn button ml-md-auto" :to="`/sobrenos`">
                     Quero saber mais
                 </RouterLink>
-            </div>
-            <div class="imagem-home w-50 h-50">
-                <img :src="promocaoImage" alt="Promoção de Abertura de Conta" />
+            </div>  
+            <div class="imagem-home d-none col-lg-6 d-lg-flex align-items-center justify-content-center w-50">
+                <img class="w-50" :src="promocaoImage" alt="Promoção de Abertura de Conta" />
             </div>
         </main>
+
 
         <h1 class="apostas">Apostas Esportivas</h1>
 
@@ -103,5 +104,6 @@ main{
     font-size: 2em;
   }
 }
+
 </style>
 
